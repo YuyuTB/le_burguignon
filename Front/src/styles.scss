@@ -1,3 +1,16 @@
 body {
 	margin: 0;
 }
+.btn {
+	background-color: #ffd32c;
+	height: 30px;
+	width: 200px;
+	border: 0px;
+	border-radius: 20px;
+	font-size: 1.2rem;
+	letter-spacing: 1.5px;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
