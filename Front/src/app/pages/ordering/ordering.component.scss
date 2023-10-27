@@ -1,0 +1,33 @@
+h1{
+    text-align: center;
+    margin: 60px;
+}
+h2{
+    text-align: center;
+    color: white;
+    background-color: #3B3938;
+    margin: 0;
+    padding: 30px;
+}
+.order{
+    width: 200px;
+    margin: 40px;
+}   
+.order-logos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 70px;
+}
+.eat-in{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #3B3938;
+    color: white;
+    border-bottom: rgba(0, 0, 0, 0.358) solid 1px;
+}
+.adress{
+    margin: 10px;
+    width: 300px;
+}
