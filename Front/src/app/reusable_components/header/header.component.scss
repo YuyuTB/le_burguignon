@@ -2,6 +2,9 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    box-shadow: #3b393832 0 1px 8px;
+    z-index: 2;
+    position: sticky;
 }
 .navbar-logo{
     width: 30%;
@@ -17,7 +20,7 @@ header{
     align-items: center;
 }
 .nav-link{
-    margin: 0 80px;
+    margin: 0 30px;
     text-decoration: none;
     color: #3B3938;
     font-size: 1.5rem;

@@ -1,3 +1,5 @@
+
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
+  faStar = faStar;
 }

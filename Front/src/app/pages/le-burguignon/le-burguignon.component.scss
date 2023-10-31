@@ -1,8 +1,6 @@
 .le-burguignon{
-    display: flex;
     flex-direction: row;
-    justify-content: center;
-    margin: 60px 0 140px 0;
+    margin: 60px 0 0 0;
 }
 .text{
     width: 40%;
@@ -12,4 +10,14 @@
     align-self: center;
     width: 400px;
     height: 400px;
+}
+.le-burguignon, .ducs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ducs{
+    flex-direction: column;
+    margin-bottom: 40px;
+  
 }
