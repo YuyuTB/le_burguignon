@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const dbConfig = require('./config.js');
 
 mongoose
 	.connect(
-		'mongodb+srv://le_burguignon:le_burguignon@burguignon.p5rfebk.mongodb.net/?retryWrites=true&w=majority',
+		dbConfig,
 		{ useNewUrlParser: true, useUnifiedTopology: true }
 	)
 	.then(() => console.log('Connexion à MongoDB réussie !'))
