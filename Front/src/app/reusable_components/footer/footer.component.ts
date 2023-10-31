@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faSnapchat } from '@fortawesome/free-brands-svg-icons';
+import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faSnapchat } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+	selector: 'app-footer',
+	templateUrl: './footer.component.html',
+	styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  faPhone = faPhone;
-  faEnvelope = faEnvelope;
-  faInstagram = faInstagram;
-  faSnapchat = faSnapchat;
+	faPhone = faPhone;
+	faEnvelope = faEnvelope;
+	faInstagram = faInstagram;
+	faSnapchat = faSnapchat;
 }

@@ -15,28 +15,36 @@ body {
 	&:hover {
 		background-color: rgb(255, 200, 0);
 		box-shadow: inset 0 0 0 3px #00000048;
+		cursor: pointer;
 	}
 }
-a:hover{
+a:hover {
 	cursor: pointer;
 }
-.btn, h1, h3{
+.btn,
+h1,
+h3 {
 	font-family: 'Open Sans', sans-serif;
 }
-h2, a, p, h4{
+h2,
+a,
+p,
+h4 {
 	font-family: 'Poppins', sans-serif;
-} 
-h1{
+}
+h1 {
 	font-size: 3rem;
 	text-transform: uppercase;
 	text-align: center;
 }
-h2{
+h2 {
 	font-size: 1.8rem;
 }
-h3{
+h3 {
 	font-size: 1.5rem;
 }
-p, li, h4{
-	font-size: 1.2rem
+p,
+li,
+h4 {
+	font-size: 1.2rem;
 }

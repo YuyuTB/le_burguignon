@@ -1,32 +1,25 @@
-h1{
-    margin: 50px;
+.order {
+	width: 80px;
+	margin: 0 50px;
 }
-h2{
-    text-align: center;
-    color: white;
-    background-color: #3B3938;
-    margin: 0;
-    padding: 20px;
+.order-logos {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 0 30px;
 }
-.order{
-    width: 280px;
-    margin: 0 60px;
-}   
-.order-logos{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 60px;
+.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
 }
-.eat-in{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background-color: #3B3938;
-    color: white;
-    border-bottom: rgba(0, 0, 0, 0.358) solid 1px;
+.eat-in {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
 }
-.adress{
-    margin: 10px;
-    width: 300px;
+.adress {
+	margin: 0 100px;
+	width: 400px;
 }
