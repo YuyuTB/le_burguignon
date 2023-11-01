@@ -1,5 +1,6 @@
 # Ignorer les fichiers de configuration pour les deux parties (frontend et backend)
 Back/config.js
+Back/migrations
 
 # Ignorer les dépendances Node.js (pour éviter de les inclure dans le dépôt)
 Back/node_modules/
@@ -10,3 +11,4 @@ Front/.angular
 Front/.vscode
 
 .DS_Store
+Front/.DS_Store

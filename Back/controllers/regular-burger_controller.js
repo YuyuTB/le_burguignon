@@ -1,0 +1,1 @@
+const model = require('../models/regular-burger.js');
