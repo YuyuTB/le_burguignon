@@ -12,6 +12,10 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { HeaderComponent } from './reusable_components/header/header.component';
 import { FooterComponent } from './reusable_components/footer/footer.component';
 import { OrderingComponent } from './pages/ordering/ordering.component';
+import { MenuCardComponent } from './reusable_components/menu-card/menu-card.component';
+import { CarouselComponent } from './reusable_components/carousel/carousel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
 	declarations: [
@@ -24,9 +28,11 @@ import { OrderingComponent } from './pages/ordering/ordering.component';
 		ContactComponent,
 		HeaderComponent,
 		FooterComponent,
-  		OrderingComponent
+  		OrderingComponent,
+		MenuCardComponent,
+		CarouselComponent
 	],
-	imports: [BrowserModule, FontAwesomeModule, AppRoutingModule],
+	imports: [BrowserModule, FontAwesomeModule, AppRoutingModule, BrowserAnimationsModule, CarouselModule.forRoot()],
 	providers: [],
 	bootstrap: [AppComponent],
 })

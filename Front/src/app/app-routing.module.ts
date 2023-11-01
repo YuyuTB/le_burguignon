@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LeBurguignonComponent } from './pages/le-burguignon/le-burguignon.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 const routes: Routes = [
 	{ path: '', component: LandingPageComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
 
 @NgModule({
 	declarations: [],
-	imports: [[RouterModule.forRoot(routes)]],
+	imports: [TooltipModule.forRoot(), [RouterModule.forRoot(routes)]],
 	exports: [RouterModule],
 })
 export class AppRoutingModule {}

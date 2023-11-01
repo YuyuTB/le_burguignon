@@ -3,7 +3,7 @@
 body {
 	margin: 0;
 }
-.btn {
+.button {
 	background-color: rgb(255, 211, 44, 95%);
 	height: 30px;
 	width: 200px;
@@ -21,9 +21,7 @@ body {
 a:hover {
 	cursor: pointer;
 }
-.btn,
-h1,
-h3 {
+.button, h1, h3 {
 	font-family: 'Open Sans', sans-serif;
 }
 h2,
