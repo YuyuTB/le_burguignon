@@ -1,3 +1,10 @@
-dbConfig =
-	'mongodb+srv://le_burguignon:le_burguignon@burguignon.p5rfebk.mongodb.net/?retryWrites=true&w=majority';
+const dbConfig = {
+    database : 'le_burguignon',
+    username : 'root',
+    password : '',
+    options : {
+        dialect: 'mysql'
+    }
+}
+
 module.exports = dbConfig;
