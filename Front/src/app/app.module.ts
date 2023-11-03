@@ -16,6 +16,7 @@ import { MenuCardComponent } from './reusable_components/menu-card/menu-card.com
 import { CarouselComponent } from './reusable_components/carousel/carousel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { DescriptiveCardComponent } from './reusable_components/descriptive-card/descriptive-card.component';
 
 @NgModule({
 	declarations: [
@@ -28,11 +29,18 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 		ContactComponent,
 		HeaderComponent,
 		FooterComponent,
-  		OrderingComponent,
+		OrderingComponent,
 		MenuCardComponent,
-		CarouselComponent
+		CarouselComponent,
+		DescriptiveCardComponent,
 	],
-	imports: [BrowserModule, FontAwesomeModule, AppRoutingModule, BrowserAnimationsModule, CarouselModule.forRoot()],
+	imports: [
+		BrowserModule,
+		FontAwesomeModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		CarouselModule.forRoot(),
+	],
 	providers: [],
 	bootstrap: [AppComponent],
 })
