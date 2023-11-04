@@ -17,6 +17,7 @@ import { CarouselComponent } from './reusable_components/carousel/carousel.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { DescriptiveCardComponent } from './reusable_components/descriptive-card/descriptive-card.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
 	declarations: [
@@ -40,6 +41,7 @@ import { DescriptiveCardComponent } from './reusable_components/descriptive-card
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		CarouselModule.forRoot(),
+		ReactiveFormsModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

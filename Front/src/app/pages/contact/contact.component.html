@@ -1,1 +1,37 @@
-<p>contact works!</p>
+<section class="contact-container">
+	<h2>Besoin d'un renseignement?</h2>
+	<div class="form">
+		<form
+			[formGroup]="contactForm"
+			(ngSubmit)="onSubmit()">
+			<input
+				type="text"
+				id="firstname"
+				formControlName="firstname"
+				placeholder="Prénom" />
+			<input
+				type="text"
+				id="lastname"
+				formControlName="lastname"
+				placeholder="Nom" />
+			<input
+				type="email"
+				id="email"
+				formControlName="email"
+				placeholder="Email" />
+			<textarea
+				id="message"
+				formControlName="message"
+				placeholder="Message"></textarea>
+
+			<button
+				type="submit"
+				class="button">
+				Envoyer
+			</button>
+		</form>
+		<img
+			src="assets/images/logo_small.png"
+			alt="" />
+	</div>
+</section>

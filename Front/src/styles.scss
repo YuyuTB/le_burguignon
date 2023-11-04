@@ -21,7 +21,10 @@ body {
 a:hover {
 	cursor: pointer;
 }
-.button, h1, h3 {
+.button,
+h1,
+h3,
+label {
 	font-family: 'Open Sans', sans-serif;
 }
 h2,
