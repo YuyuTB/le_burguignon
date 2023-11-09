@@ -5,11 +5,6 @@ app-carousel {
 	right: 0;
 	z-index: 1;
 }
-.order-button {
-	padding-top: 310px;
-	padding-bottom: 6px;
-	text-align: center;
-}
 .menu {
 	background-color: #3b3938;
 	color: white;
@@ -35,4 +30,11 @@ section {
 	flex-direction: row;
 	justify-content: center;
 	flex-wrap: wrap;
+}
+.app-ordering {
+	padding-top: 305px;
+	background-color: #3b3938;
+	display: flex;
+	justify-content: center;
+	border-bottom: rgba(0, 0, 0, 0.179) 1px solid;
 }

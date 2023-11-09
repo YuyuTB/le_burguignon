@@ -1,25 +1,16 @@
-.order {
-	width: 80px;
-	margin: 0 50px;
-}
-.order-logos {
+.order-links {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	justify-content: center;
+	background-color: #3b3938;
+}
+a {
+	color: white;
+	text-decoration: none;
+	font-size: 1.4rem;
 	margin: 0 30px;
-}
-.row {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-}
-.eat-in {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-}
-.adress {
-	margin: 0 100px;
-	width: 400px;
+	&:hover {
+		color: rgb(255, 211, 44, 95%);
+		text-decoration: underline;
+	}
 }
