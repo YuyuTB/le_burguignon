@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { DescriptiveCardComponent } from './reusable_components/descriptive-card/descriptive-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
 	declarations: [
@@ -34,6 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 		MenuCardComponent,
 		CarouselComponent,
 		DescriptiveCardComponent,
+		LoginComponent,
+		DashboardComponent,
 	],
 	imports: [
 		BrowserModule,
