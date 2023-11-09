@@ -20,6 +20,11 @@ import { DescriptiveCardComponent } from './reusable_components/descriptive-card
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DashboardHeaderComponent } from './pages/dashboard/dashboard-header/dashboard-header.component';
+import { DashboardFooterComponent } from './pages/dashboard/dashboard-footer/dashboard-footer.component';
+import { MenuDashboardComponent } from './pages/dashboard/menu-dashboard/menu-dashboard.component';
+import { CarouselCrudComponent } from './pages/dashboard/carousel-crud/carousel-crud.component';
+import { ContactCrudComponent } from './pages/dashboard/contact-crud/contact-crud.component';
 
 @NgModule({
 	declarations: [
@@ -38,6 +43,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 		DescriptiveCardComponent,
 		LoginComponent,
 		DashboardComponent,
+		DashboardHeaderComponent,
+		DashboardFooterComponent,
+		MenuDashboardComponent,
+		CarouselCrudComponent,
+		ContactCrudComponent,
 	],
 	imports: [
 		BrowserModule,
