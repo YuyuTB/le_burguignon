@@ -1,0 +1,10 @@
+<!-- crud.component.html -->
+<div *ngFor="let item of data; let i = index">
+	<div (click)="selectItem(item)">
+		{{ item.name }}
+		<!-- Remplace par les propriétés de ton objet -->
+	</div>
+	<button (click)="deleteItem(i)">Supprimer</button>
+</div>
+
+<!-- Ajoute des formulaires et des fonctionnalités selon tes besoins -->

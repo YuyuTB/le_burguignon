@@ -25,6 +25,12 @@ import { DashboardFooterComponent } from './pages/dashboard/dashboard-footer/das
 import { MenuDashboardComponent } from './pages/dashboard/menu-dashboard/menu-dashboard.component';
 import { CarouselCrudComponent } from './pages/dashboard/carousel-crud/carousel-crud.component';
 import { ContactCrudComponent } from './pages/dashboard/contact-crud/contact-crud.component';
+import { CrudModelComponent } from './pages/dashboard/crud-model/crud-model.component';
+import { TemporaryBurgerCrudComponent } from './pages/dashboard/menu-dashboard/cruds/temporary-burger-crud/temporary-burger-crud.component';
+import { SnackCrudComponent } from './pages/dashboard/menu-dashboard/cruds/snack-crud/snack-crud.component';
+import { RegularBurgerCrudComponent } from './pages/dashboard/menu-dashboard/cruds/regular-burger-crud/regular-burger-crud.component';
+import { DrinkCrudComponent } from './pages/dashboard/menu-dashboard/cruds/drink-crud/drink-crud.component';
+import { DessertCrudComponent } from './pages/dashboard/menu-dashboard/cruds/dessert-crud/dessert-crud.component';
 
 @NgModule({
 	declarations: [
@@ -48,6 +54,12 @@ import { ContactCrudComponent } from './pages/dashboard/contact-crud/contact-cru
 		MenuDashboardComponent,
 		CarouselCrudComponent,
 		ContactCrudComponent,
+		CrudModelComponent,
+		TemporaryBurgerCrudComponent,
+		SnackCrudComponent,
+		RegularBurgerCrudComponent,
+		DrinkCrudComponent,
+		DessertCrudComponent,
 	],
 	imports: [
 		BrowserModule,
