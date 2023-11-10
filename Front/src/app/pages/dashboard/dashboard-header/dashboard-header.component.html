@@ -1,1 +1,23 @@
-<p>dashboard-header works!</p>
+<header>
+	<img
+		src="assets/images/logo_large.png"
+		alt="logo du site"
+		class="navbar-logo col" />
+	<nav class="col">
+		<a
+			routerLink="/dashboard/menu"
+			routerLinkActive="active"
+			[routerLinkActiveOptions]="{ exact: false }"
+			>Carte</a
+		><a
+			routerLink="/dashboard/carousel-crud"
+			routerLinkActive="active"
+			>Carousel</a
+		><a
+			routerLink="/dashboard/contact-crud"
+			routerLinkActive="active"
+			>Contact</a
+		>
+	</nav>
+	<p class="col">Déconnexion</p>
+</header>

@@ -2,9 +2,20 @@
 <div *ngFor="let item of data; let i = index">
 	<div (click)="selectItem(item)">
 		{{ item.name }}
-		<!-- Remplace par les propriétés de ton objet -->
+		{{ item.img }}
+		{{ item.desc }}
+		{{ item.firstName }}
+		{{ item.lastName }}
+		{{ item.email }}
+		{{ item.message }}
+		<button
+			*ngIf="item.isAlterable && true"
+			(click)="modifyItem(i)">
+			Modifier
+		</button>
+		<button (click)="deleteItem(i)">Supprimer</button>
+		{{ item.isActive }}
 	</div>
-	<button (click)="deleteItem(i)">Supprimer</button>
 </div>
 
 <!-- Ajoute des formulaires et des fonctionnalités selon tes besoins -->

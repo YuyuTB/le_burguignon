@@ -1,0 +1,21 @@
+nav {
+	background-color: #3b3938;
+	height: 100vh;
+	width: 200px;
+	border: 1px black solid;
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+}
+a {
+	text-decoration: none;
+	font-size: 1.2rem;
+	color: white;
+	padding: 10px 5px;
+	&:hover {
+		color: rgb(255, 211, 44, 95%);
+	}
+}
+.active {
+	color: rgb(255, 211, 44, 95%);
+}

@@ -21,7 +21,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DashboardHeaderComponent } from './pages/dashboard/dashboard-header/dashboard-header.component';
-import { DashboardFooterComponent } from './pages/dashboard/dashboard-footer/dashboard-footer.component';
 import { MenuDashboardComponent } from './pages/dashboard/menu-dashboard/menu-dashboard.component';
 import { CarouselCrudComponent } from './pages/dashboard/carousel-crud/carousel-crud.component';
 import { ContactCrudComponent } from './pages/dashboard/contact-crud/contact-crud.component';
@@ -31,6 +30,8 @@ import { SnackCrudComponent } from './pages/dashboard/menu-dashboard/cruds/snack
 import { RegularBurgerCrudComponent } from './pages/dashboard/menu-dashboard/cruds/regular-burger-crud/regular-burger-crud.component';
 import { DrinkCrudComponent } from './pages/dashboard/menu-dashboard/cruds/drink-crud/drink-crud.component';
 import { DessertCrudComponent } from './pages/dashboard/menu-dashboard/cruds/dessert-crud/dessert-crud.component';
+import { MenuCrudHeaderComponent } from './pages/dashboard/menu-dashboard/menu-crud-header/menu-crud-header.component';
+import { DashboardCrudRoutingModule } from './pages/dashboard/dashboard-routing.module';
 
 @NgModule({
 	declarations: [
@@ -50,7 +51,6 @@ import { DessertCrudComponent } from './pages/dashboard/menu-dashboard/cruds/des
 		LoginComponent,
 		DashboardComponent,
 		DashboardHeaderComponent,
-		DashboardFooterComponent,
 		MenuDashboardComponent,
 		CarouselCrudComponent,
 		ContactCrudComponent,
@@ -60,6 +60,7 @@ import { DessertCrudComponent } from './pages/dashboard/menu-dashboard/cruds/des
 		RegularBurgerCrudComponent,
 		DrinkCrudComponent,
 		DessertCrudComponent,
+		MenuCrudHeaderComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -68,6 +69,7 @@ import { DessertCrudComponent } from './pages/dashboard/menu-dashboard/cruds/des
 		BrowserAnimationsModule,
 		CarouselModule.forRoot(),
 		ReactiveFormsModule,
+		DashboardCrudRoutingModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

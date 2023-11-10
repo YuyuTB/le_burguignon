@@ -15,13 +15,15 @@ export class AppComponent {
 		router.events.subscribe((event) => {
 			if (event instanceof NavigationEnd) {
 				this.showHeader =
-					event.url !== '/' &&
-					event.url !== '/dashboard' &&
-					event.url !== '/login';
+					event.url == '/menu' ||
+					event.url == '/contact' ||
+					event.url == '/le_burguignon' ||
+					event.url == '/home';
 				this.showFooter =
-					event.url !== '/' &&
-					event.url !== '/dashboard' &&
-					event.url !== '/login';
+					event.url == '/menu' ||
+					event.url == '/contact' ||
+					event.url == '/le_burguignon' ||
+					event.url == '/home';
 			}
 		});
 	}

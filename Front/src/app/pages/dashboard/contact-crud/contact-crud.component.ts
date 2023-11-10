@@ -7,9 +7,14 @@ import { Component } from '@angular/core';
 })
 export class ContactCrudComponent {
 	items = [
-		{ id: 1, name: 'Item 1' },
-		{ id: 2, name: 'Item 2' },
-		// ... d'autres éléments
+		{
+			id: 1,
+			firstName: 'first',
+			lastName: 'last',
+			email: 'mail',
+			message: 'message',
+			isAlterable: false,
+		},
 	];
 	onItemSelected(item: any) {
 		// Logique lorsque l'élément est sélectionné

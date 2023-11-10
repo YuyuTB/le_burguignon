@@ -6,12 +6,7 @@ import { Component } from '@angular/core';
 	styleUrls: ['./regular-burger-crud.component.scss'],
 })
 export class RegularBurgerCrudComponent {
-	items = [
-		{ id: 1, name: 'Item 1' },
-		{ id: 2, name: 'Item 2' },
-		{ id: 3, name: 'Item 3' },
-		// ... d'autres éléments
-	];
+	items = [{ id: 1, name: 'Burger', desc: 'Burger', isAlterable: true }];
 	onItemSelected(item: any) {
 		// Logique lorsque l'élément est sélectionné
 		console.log('Element sélectionné :', item);

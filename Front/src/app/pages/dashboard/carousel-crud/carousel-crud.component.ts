@@ -7,9 +7,7 @@ import { Component } from '@angular/core';
 })
 export class CarouselCrudComponent {
 	items = [
-		{ id: 1, name: 'Item 1' },
-		{ id: 2, name: 'Item 2' },
-		{ id: 3, name: 'Item 3' },
+		{ id: 1, img: 'Image', desc: 'desc', isAlterable: true },
 		// ... d'autres éléments
 	];
 	onItemSelected(item: any) {

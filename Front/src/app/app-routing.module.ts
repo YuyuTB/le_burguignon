@@ -7,7 +7,6 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { LoginComponent } from './pages/login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
 	{ path: '', component: LandingPageComponent },
@@ -16,7 +15,6 @@ const routes: Routes = [
 	{ path: 'menu', component: MenuComponent },
 	{ path: 'contact', component: ContactComponent },
 	{ path: 'login', component: LoginComponent },
-	{ path: 'dashboard', component: DashboardComponent },
 ];
 
 @NgModule({
