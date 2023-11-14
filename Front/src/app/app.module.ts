@@ -17,14 +17,13 @@ import { CarouselComponent } from './reusable_components/carousel/carousel.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { DescriptiveCardComponent } from './reusable_components/descriptive-card/descriptive-card.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DashboardHeaderComponent } from './pages/dashboard/dashboard-header/dashboard-header.component';
 import { MenuDashboardComponent } from './pages/dashboard/menu-dashboard/menu-dashboard.component';
 import { CarouselCrudComponent } from './pages/dashboard/carousel-crud/carousel-crud.component';
 import { ContactCrudComponent } from './pages/dashboard/contact-crud/contact-crud.component';
-import { CrudModelComponent } from './pages/dashboard/crud-model/crud-model.component';
 import { TemporaryBurgerCrudComponent } from './pages/dashboard/menu-dashboard/cruds/temporary-burger-crud/temporary-burger-crud.component';
 import { SnackCrudComponent } from './pages/dashboard/menu-dashboard/cruds/snack-crud/snack-crud.component';
 import { RegularBurgerCrudComponent } from './pages/dashboard/menu-dashboard/cruds/regular-burger-crud/regular-burger-crud.component';
@@ -32,6 +31,14 @@ import { DrinkCrudComponent } from './pages/dashboard/menu-dashboard/cruds/drink
 import { DessertCrudComponent } from './pages/dashboard/menu-dashboard/cruds/dessert-crud/dessert-crud.component';
 import { MenuCrudHeaderComponent } from './pages/dashboard/menu-dashboard/menu-crud-header/menu-crud-header.component';
 import { DashboardCrudRoutingModule } from './pages/dashboard/dashboard-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { CreatecarouselitemComponent } from './pages/dashboard/carousel-crud/createcarouselitem/createcarouselitem.component';
+import { CreatedessertComponent } from './pages/dashboard/menu-dashboard/cruds/dessert-crud/createdessert/createdessert.component';
+import { CreatedrinkComponent } from './pages/dashboard/menu-dashboard/cruds/drink-crud/createdrink/createdrink.component';
+import { CreateregularComponent } from './pages/dashboard/menu-dashboard/cruds/regular-burger-crud/createregular/createregular.component';
+import { CreatesnackComponent } from './pages/dashboard/menu-dashboard/cruds/snack-crud/createsnack/createsnack.component';
+import { CreatetemporaryComponent } from './pages/dashboard/menu-dashboard/cruds/temporary-burger-crud/createtemporary/createtemporary.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
 	declarations: [
@@ -54,13 +61,18 @@ import { DashboardCrudRoutingModule } from './pages/dashboard/dashboard-routing.
 		MenuDashboardComponent,
 		CarouselCrudComponent,
 		ContactCrudComponent,
-		CrudModelComponent,
 		TemporaryBurgerCrudComponent,
 		SnackCrudComponent,
 		RegularBurgerCrudComponent,
 		DrinkCrudComponent,
 		DessertCrudComponent,
 		MenuCrudHeaderComponent,
+		CreatecarouselitemComponent,
+		CreatedessertComponent,
+		CreatedrinkComponent,
+		CreateregularComponent,
+		CreatesnackComponent,
+		CreatetemporaryComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -70,6 +82,9 @@ import { DashboardCrudRoutingModule } from './pages/dashboard/dashboard-routing.
 		CarouselModule.forRoot(),
 		ReactiveFormsModule,
 		DashboardCrudRoutingModule,
+		HttpClientModule,
+		CommonModule,
+		FormsModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

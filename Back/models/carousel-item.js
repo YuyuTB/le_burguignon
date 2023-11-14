@@ -1,18 +1,23 @@
-const Sequelize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../app.js');
 
-const CarouselItem = sequelize.define('CarouselItem', {
-    CarouselItem_id: {
-        type: Sequelize.DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    image: Sequelize.DataTypes.STRING,
-    description: Sequelize.DataTypes.TEXT
-},
-{
-    freezeTableName: true,
-    timestamps: false
-})
+module.exports = (sequelize) => {
+	const CarouselItem = sequelize.define(
+		'carouselitem',
+		{
+			CarouselItem_id: {
+				type: DataTypes.INTEGER,
+				primaryKey: true,
+				autoIncrement: true,
+			},
+			image: DataTypes.STRING,
+			description: DataTypes.TEXT,
+		},
+		{
+			freezeTableName: true,
+			timestamps: false,
+		}
+	);
 
-module.exports = CarouselItem;
+	return CarouselItem;
+};

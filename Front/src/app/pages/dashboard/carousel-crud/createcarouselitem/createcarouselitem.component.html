@@ -1,0 +1,26 @@
+<!-- createcarouselitem.component.html -->
+
+<div>
+	<h2>Créer un Nouvel Élément du Carrousel</h2>
+	<form (submit)="createCarouselItem()">
+		<label for="image">Image:</label>
+		<input
+			type="file"
+			id="image"
+			name="image"
+			(change)="onFileSelected($event)"
+			accept="image/*"
+			required />
+
+		<label for="description">Description:</label>
+		<textarea
+			id="description"
+			name="description"
+			[(ngModel)]="newCarouselItem.description"
+			required></textarea>
+
+		<!-- Autres champs du modèle -->
+
+		<button type="submit">Créer</button>
+	</form>
+</div>

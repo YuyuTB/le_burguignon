@@ -1,23 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CarouselItemService } from 'src/services/carouselitem.service';
 
 @Component({
 	selector: 'app-carousel-crud',
 	templateUrl: './carousel-crud.component.html',
 	styleUrls: ['./carousel-crud.component.scss'],
 })
-export class CarouselCrudComponent {
-	items = [
-		{ id: 1, img: 'Image', desc: 'desc', isAlterable: true },
-		// ... d'autres éléments
-	];
-	onItemSelected(item: any) {
-		// Logique lorsque l'élément est sélectionné
-		console.log('Element sélectionné :', item);
+export class CarouselCrudComponent implements OnInit {
+	carouselItems: any[] = [];
+
+	constructor(
+		private router: Router,
+		private carouselItemService: CarouselItemService
+	) {}
+
+	ngOnInit(): void {
+		this.loadCarouselItems();
 	}
 
-	onItemDeleted(index: number) {
-		// Logique lorsque l'élément est supprimé
-		console.log("Element supprimé à l'index :", index);
-		this.items.splice(index, 1); // Supprime l'élément du tableau
+	loadCarouselItems(): void {
+		this.carouselItemService.getAllCarouselItems().subscribe(
+			(data) => {
+				this.carouselItems = data;
+			},
+			(error) => {
+				console.error(error);
+			}
+		);
+	}
+
+	deleteCarouselItem(carouselItemId: number): void {
+		this.carouselItemService.deleteCarouselItem(carouselItemId).subscribe(
+			() => {
+				this.loadCarouselItems(); // Recharge la liste après suppression
+			},
+			(error) => {
+				console.error(error);
+			}
+		);
+	}
+	goToCreatePage(): void {
+		this.router.navigate(['/dashboard/create-carousel-item']);
 	}
 }

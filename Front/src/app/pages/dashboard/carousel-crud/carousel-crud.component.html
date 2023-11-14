@@ -1,4 +1,16 @@
-<app-crud
-	[data]="items"
-	(itemSelected)="onItemSelected($event)"
-	(itemDeleted)="onItemDeleted($event)"></app-crud>
+<!-- carousel-list.component.html -->
+
+<div>
+	<h2>Liste des Éléments du Carrousel</h2>
+	<ul>
+		<li *ngFor="let item of carouselItems">
+			<span>{{ item.image }}</span>
+			<span>{{ item.description }}</span>
+			<button (click)="deleteCarouselItem(item.CarouselItem_id)">
+				Supprimer
+			</button>
+		</li>
+	</ul>
+
+	<button (click)="goToCreatePage()">Ajouter un Élément</button>
+</div>
