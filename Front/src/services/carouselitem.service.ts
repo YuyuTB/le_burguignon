@@ -22,10 +22,7 @@ export class CarouselItemService {
 		carouselItemId: number,
 		carouselItemData: any
 	): Observable<any> {
-		return this.http.put(
-			`${this.baseUrl}/${carouselItemId}`,
-			carouselItemData
-		);
+		return this.http.put(`${this.baseUrl}/${carouselItemId}`, carouselItemData);
 	}
 
 	deleteCarouselItem(carouselItemId: number): Observable<any> {

@@ -1,28 +1,25 @@
-const express = require('express');
 const bodyParser = require('body-parser');
 const carouselRoutes = require('./routes/carouselRoutes');
 const { Sequelize } = require('sequelize');
 const multer = require('multer');
 const path = require('path');
-const app = express();
-
+const express = require('express');
 const cors = require('cors');
-app.use((req, res, next) => {
-	res.setHeader('Access-Control-Allow-Origin', '*');
-	res.setHeader(
-		'Access-Control-Allow-Headers',
-		'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization'
-	);
-	res.setHeader(
-		'Access-Control-Allow-Methods',
-		'GET, POST, PUT, DELETE, PATCH, OPTIONS'
-	);
-	next();
-});
+
+const app = express();
+const corsOptions = {
+	origin: 'http://localhost:4200', // Update this with your Angular app's origin
+	optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 // Middleware pour analyser le corps des requêtes au format JSON
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+	res.send('Bienvenue sur le serveur !'); // ou renvoie le contenu souhaité
+});
 // Utiliser le fichier de configuration Sequelize
 const sequelizeConfig = require('./config/config.json')[
 	process.env.NODE_ENV || 'development'
@@ -41,13 +38,10 @@ sequelize
 		console.error('Unable to connect to the database:', error);
 	});
 
-// Définir le modèle Carousel et synchroniser avec la base de données
-const { carouselitem } = require('./models');
-carouselitem.sync();
-
 // Utilisation des routes définies dans taskRoutes
-app.get('/api/carouselitem', (req, res) => {
-	res.send('Ceci est la route /api/carouselitem');
+app.get('/api/carouselitems', (req, res) => {
+	const carouselItems = ['test', 'test1', 'test2', 'test3'];
+	res.send(carouselItems);
 });
 
 // Gérer les erreurs 404 (Not Found)
@@ -69,18 +63,18 @@ const storage = multer.diskStorage({
 		const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
 		cb(
 			null,
-			file.fieldname +
-				'-' +
-				uniqueSuffix +
-				path.extname(file.originalname)
+			file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname)
 		);
 	},
 });
 
 const upload = multer({ storage: storage });
 // Exemple de route pour le téléchargement d'images
-app.post('/upload', upload.single('image'), (req, res) => {
-	// À ce stade, le fichier a été téléchargé et stocké dans le dossier 'images/carousel'
-	// Vous pouvez maintenant renvoyer une réponse ou effectuer d'autres actions nécessaires
+app.post('/api/carouselitems/upload', upload.single('image'), (req, res) => {
+	// Logique pour gérer le fichier téléchargé
 	res.status(200).json({ message: "Téléchargement d'image réussi." });
+});
+
+app.listen(3000, () => {
+	console.log('Server is running on port 3000');
 });

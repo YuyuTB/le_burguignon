@@ -22,6 +22,7 @@ export class CarouselCrudComponent implements OnInit {
 	loadCarouselItems(): void {
 		this.carouselItemService.getAllCarouselItems().subscribe(
 			(data) => {
+				console.log('Réponse de la requête HTTP', data);
 				this.carouselItems = data;
 			},
 			(error) => {
