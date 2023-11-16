@@ -6,30 +6,27 @@ import { Observable } from 'rxjs';
 	providedIn: 'root',
 })
 export class CarouselItemService {
-	private baseUrl = 'http://localhost:3000/api/carouselitems';
+	private apiUrl = 'http://localhost:3000/api/carousel';
 
 	constructor(private http: HttpClient) {}
 
-	getAllCarouselItems(): Observable<any> {
-		return this.http.get(this.baseUrl);
+	// CREATE
+	createItem(item: any): Observable<any> {
+		return this.http.post(`${this.apiUrl}/items`, item);
 	}
 
-	createCarouselItem(carouselItemData: any): Observable<any> {
-		return this.http.post(this.baseUrl, carouselItemData);
+	// READ
+	getAllItems(): Observable<any[]> {
+		return this.http.get<any[]>(`${this.apiUrl}/items`);
 	}
 
-	updateCarouselItem(
-		carouselItemId: number,
-		carouselItemData: any
-	): Observable<any> {
-		return this.http.put(`${this.baseUrl}/${carouselItemId}`, carouselItemData);
+	// UPDATE
+	updateItem(itemId: number, updatedItem: any): Observable<any> {
+		return this.http.put(`${this.apiUrl}/items/${itemId}`, updatedItem);
 	}
 
-	deleteCarouselItem(carouselItemId: number): Observable<any> {
-		return this.http.delete(`${this.baseUrl}/${carouselItemId}`);
-	}
-
-	uploadImage(formData: FormData): Observable<any> {
-		return this.http.post(`${this.baseUrl}/upload`, formData);
+	// DELETE
+	deleteItem(itemId: number): Observable<any> {
+		return this.http.delete(`${this.apiUrl}/items/${itemId}`);
 	}
 }

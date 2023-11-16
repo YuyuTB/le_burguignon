@@ -17,7 +17,7 @@ import { CarouselComponent } from './reusable_components/carousel/carousel.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { DescriptiveCardComponent } from './reusable_components/descriptive-card/descriptive-card.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DashboardHeaderComponent } from './pages/dashboard/dashboard-header/dashboard-header.component';

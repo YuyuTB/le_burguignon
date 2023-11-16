@@ -8,38 +8,30 @@ import { CarouselItemService } from 'src/services/carouselitem.service';
 	styleUrls: ['./carousel-crud.component.scss'],
 })
 export class CarouselCrudComponent implements OnInit {
-	carouselItems: any[] = [];
+	items: any[] = [];
 
-	constructor(
-		private router: Router,
-		private carouselItemService: CarouselItemService
-	) {}
+	constructor(private router: Router, private service: CarouselItemService) {}
 
 	ngOnInit(): void {
-		this.loadCarouselItems();
+		this.loadItems();
 	}
 
-	loadCarouselItems(): void {
-		this.carouselItemService.getAllCarouselItems().subscribe(
-			(data) => {
-				console.log('Réponse de la requête HTTP', data);
-				this.carouselItems = data;
-			},
-			(error) => {
-				console.error(error);
-			}
-		);
+	loadItems() {
+		this.service.getAllItems().subscribe((data) => {
+			this.items = data;
+		});
 	}
 
-	deleteCarouselItem(carouselItemId: number): void {
-		this.carouselItemService.deleteCarouselItem(carouselItemId).subscribe(
-			() => {
-				this.loadCarouselItems(); // Recharge la liste après suppression
-			},
-			(error) => {
-				console.error(error);
-			}
-		);
+	updateItem(itemId: number, updatedItem: any) {
+		this.service.updateItem(itemId, updatedItem).subscribe(() => {
+			this.loadItems();
+		});
+	}
+
+	deleteItem(itemId: number) {
+		this.service.deleteItem(itemId).subscribe(() => {
+			this.loadItems();
+		});
 	}
 	goToCreatePage(): void {
 		this.router.navigate(['/dashboard/create-carousel-item']);

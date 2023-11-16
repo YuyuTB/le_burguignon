@@ -1,5 +1,4 @@
 const bodyParser = require('body-parser');
-const carouselRoutes = require('./routes/carouselRoutes');
 const { Sequelize } = require('sequelize');
 const multer = require('multer');
 const path = require('path');
@@ -17,42 +16,27 @@ app.use(cors(corsOptions));
 // Middleware pour analyser le corps des requêtes au format JSON
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-	res.send('Bienvenue sur le serveur !'); // ou renvoie le contenu souhaité
-});
-// Utiliser le fichier de configuration Sequelize
-const sequelizeConfig = require('./config/config.json')[
-	process.env.NODE_ENV || 'development'
-];
-const sequelize = new Sequelize(sequelizeConfig);
-
-// Vérifier la connexion à la base de données
-sequelize
-	.authenticate()
-	.then(() => {
-		console.log(
-			'Connection to the database has been established successfully.'
-		);
-	})
-	.catch((error) => {
-		console.error('Unable to connect to the database:', error);
-	});
-
-// Utilisation des routes définies dans taskRoutes
-app.get('/api/carouselitems', (req, res) => {
-	const carouselItems = ['test', 'test1', 'test2', 'test3'];
-	res.send(carouselItems);
+// Routes
+app.get('/api/carousel/items', (req, res) => {
+	// Logique pour récupérer tous les éléments de la base de données
+	res.json(/* Résultat de la requête à la base de données */);
 });
 
-// Gérer les erreurs 404 (Not Found)
-app.use((req, res) => {
-	res.status(404).send(`Ressource not found ${req.originalUrl}`);
+app.post('/api/carousel/items', (req, res) => {
+	// Logique pour ajouter un nouvel élément à la base de données
+	res.json(/* Résultat de la requête à la base de données */);
 });
 
-// Gérer les erreurs 500 (Internal Server Error)
-app.use((err, req, res, next) => {
-	console.error(err.stack);
-	res.status(500).json({ error: 'Internal Server Error' });
+app.put('/api/carousel/items/:id', (req, res) => {
+	const itemId = req.params.id;
+	// Logique pour mettre à jour un élément dans la base de données
+	res.json(/* Résultat de la requête à la base de données */);
+});
+
+app.delete('/api/carousel/items/:id', (req, res) => {
+	const itemId = req.params.id;
+	// Logique pour supprimer un élément de la base de données
+	res.json(/* Résultat de la requête à la base de données */);
 });
 
 const storage = multer.diskStorage({
@@ -60,21 +44,20 @@ const storage = multer.diskStorage({
 		cb(null, 'images');
 	},
 	filename: function (req, file, cb) {
-		const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-		cb(
-			null,
-			file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname)
-		);
+		const uniqueSuffix =
+			Date.now() +
+			'-' +
+			Math.round(Math.random() * 1e9) +
+			path.extname(file.originalname);
+		cb(null, uniqueSuffix);
 	},
 });
 
 const upload = multer({ storage: storage });
 // Exemple de route pour le téléchargement d'images
-app.post('/api/carouselitems/upload', upload.single('image'), (req, res) => {
-	// Logique pour gérer le fichier téléchargé
-	res.status(200).json({ message: "Téléchargement d'image réussi." });
+app.post('/api/carousel/upload', upload.single('image'), (req, res) => {
+	res.send('Image téléchargée avec succès.');
 });
-
 app.listen(3000, () => {
 	console.log('Server is running on port 3000');
 });
