@@ -10,20 +10,18 @@ const corsOptions = {
 	origin: 'http://localhost:4200', // Update this with your Angular app's origin
 	optionsSuccessStatus: 200,
 };
-app.use(bodyParser.json());
-app.use(cors(corsOptions));
 
 sequelize
-	.sync({ force: false })
+	.authenticate()
 	.then(() => {
-		console.log('Base de données synchronisée');
+		console.log('Connection has been established successfully.');
 	})
 	.catch((error) => {
-		console.error(
-			'Erreur lors de la synchronisation de la base de données:',
-			error
-		);
+		console.error('Unable to connect to the database: ', error);
 	});
+
+app.use(bodyParser.json());
+app.use(cors(corsOptions));
 
 app.use('/api', carouselRoutes);
 
