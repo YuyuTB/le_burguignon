@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const carouselController = require('../controllers/carousel-item_controller.js');
+const carouselItemController = require('../controllers/carousel-item_controller');
 
-router.post('/carousel', carouselController.create);
+router.get('/carousel', carouselItemController.getAllCarouselItems);
 
 module.exports = router;

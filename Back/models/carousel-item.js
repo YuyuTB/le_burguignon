@@ -1,8 +1,8 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../app.js');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/sequelize');
 
 const CarouselItem = sequelize.define(
-	'carouselitem',
+	'CarouselItem',
 	{
 		CarouselItem_id: {
 			type: DataTypes.INTEGER,
@@ -17,4 +17,5 @@ const CarouselItem = sequelize.define(
 		timestamps: false,
 	}
 );
+
 module.exports = CarouselItem;

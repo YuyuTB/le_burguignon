@@ -1,15 +1,14 @@
-const { CarouselItem } = require('../models');
+const CarouselItem = require('../models/carousel-item');
+const db = require('../config/sequelize');
 
-module.exports = {
-	async create(req, res) {
-		try {
-			const carousel = await CarouselItem.create(req.body);
-			res.status(201).json(carousel);
-		} catch (error) {
-			console.error(error);
-			res.status(500).json({ error: 'Internal Server Error' });
-		}
-	},
+async function getAllCarouselItems(req, res) {
+	try {
+		const carouselItems = await db.CarouselItem.findAll();
+		res.json(carouselItems);
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ message: 'Erreur Serveur' });
+	}
+}
 
-	// Implement other CRUD operations (read, update, delete) similarly
-};
+module.exports = { getAllCarouselItems };
