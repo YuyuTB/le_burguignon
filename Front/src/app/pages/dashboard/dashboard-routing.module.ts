@@ -15,6 +15,7 @@ import { CreatedrinkComponent } from './menu-dashboard/cruds/drink-crud/createdr
 import { CreateregularComponent } from './menu-dashboard/cruds/regular-burger-crud/createregular/createregular.component';
 import { CreatetemporaryComponent } from './menu-dashboard/cruds/temporary-burger-crud/createtemporary/createtemporary.component';
 import { CreatesnackComponent } from './menu-dashboard/cruds/snack-crud/createsnack/createsnack.component';
+import { UpdatecarouselitemComponent } from './carousel-crud/updatecarouselitem/updatecarouselitem.component';
 
 const routes: Routes = [
 	{
@@ -59,6 +60,10 @@ const routes: Routes = [
 			{ path: 'create-regular', component: CreateregularComponent },
 			{ path: 'create-temporary', component: CreatetemporaryComponent },
 			{ path: 'create-snack', component: CreatesnackComponent },
+			{
+				path: 'update-carousel-item/:id',
+				component: UpdatecarouselitemComponent,
+			},
 		],
 	},
 ];

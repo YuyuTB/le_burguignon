@@ -7,13 +7,15 @@
 		<input
 			type="file"
 			(change)="onFileSelected($event)"
-			formControlName="selectedImage" />
+			formControlName="selectedImage"
+			[(ngModel)]="item.imgUrl" />
 
 		<label for="description">Description:</label>
 		<textarea
 			id="description"
 			name="description"
 			formControlName="description"
+			[(ngModel)]="item.description"
 			required></textarea>
 
 		<button type="submit">Créer</button>

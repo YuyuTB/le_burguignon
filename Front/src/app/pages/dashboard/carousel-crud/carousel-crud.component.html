@@ -4,9 +4,14 @@
 	<h2>Liste des Éléments du Carrousel</h2>
 	<ul>
 		<li *ngFor="let item of items">
-			<span>{{ item.image }}</span>
+			<span>{{ item.imgUrl }}</span>
 			<span>{{ item.description }}</span>
-			<button (click)="deleteItem(item.CarouselItem_id)">Supprimer</button>
+			<button (click)="goToUpdatePage(item.CarouselItem_id)">
+				Modifier
+			</button>
+			<button (click)="deleteItem(item.CarouselItem_id)">
+				Supprimer
+			</button>
 		</li>
 	</ul>
 

@@ -1,32 +1,56 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class CarouselItemService {
 	private apiUrl = 'http://localhost:3000/api/carousel';
-
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient, private router: Router) {}
+	private itemIdSource = new Subject<number>();
+	itemId$ = this.itemIdSource.asObservable();
 
 	// CREATE
 	createItem(item: any): Observable<any> {
-		return this.http.post(`${this.apiUrl}/items`, item);
+		return this.http.post(`${this.apiUrl}`, item);
 	}
 
 	// READ
 	getAllItems(): Observable<any[]> {
-		return this.http.get<any[]>(`${this.apiUrl}/items`);
+		return this.http.get<any[]>(`${this.apiUrl}`);
+	}
+
+	getItemById(itemId: number): Observable<any> {
+		return this.http.get(`${this.apiUrl}/${itemId}`);
 	}
 
 	// UPDATE
-	updateItem(itemId: number, updatedItem: any): Observable<any> {
-		return this.http.put(`${this.apiUrl}/items/${itemId}`, updatedItem);
+	updateItem(itemId: number, data: any): Observable<any> {
+		return this.http.put(`${this.apiUrl}/upload/${itemId}`, data);
+	}
+
+	goToUpdatePage(itemId: number): void {
+		this.router.navigate(['/update-carousel-item', itemId]);
+	}
+
+	sendItemId(itemId: number) {
+		this.itemIdSource.next(itemId);
 	}
 
 	// DELETE
 	deleteItem(itemId: number): Observable<any> {
-		return this.http.delete(`${this.apiUrl}/items/${itemId}`);
+		return this.http.delete(`${this.apiUrl}/${itemId}`);
+	}
+
+	createItemWithImage(formData: any, file: File): Observable<any> {
+		const uploadData = new FormData();
+		uploadData.append('selectedImage', file);
+		uploadData.append('description', formData.description);
+		const headers = new HttpHeaders();
+		headers.set('Content-Type', 'multipart/form-data');
+
+		return this.http.post(`${this.apiUrl}/upload`, uploadData, { headers });
 	}
 }

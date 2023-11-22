@@ -39,6 +39,7 @@ import { CreateregularComponent } from './pages/dashboard/menu-dashboard/cruds/r
 import { CreatesnackComponent } from './pages/dashboard/menu-dashboard/cruds/snack-crud/createsnack/createsnack.component';
 import { CreatetemporaryComponent } from './pages/dashboard/menu-dashboard/cruds/temporary-burger-crud/createtemporary/createtemporary.component';
 import { CommonModule } from '@angular/common';
+import { UpdatecarouselitemComponent } from './pages/dashboard/carousel-crud/updatecarouselitem/updatecarouselitem.component';
 
 @NgModule({
 	declarations: [
@@ -73,6 +74,7 @@ import { CommonModule } from '@angular/common';
 		CreateregularComponent,
 		CreatesnackComponent,
 		CreatetemporaryComponent,
+		UpdatecarouselitemComponent,
 	],
 	imports: [
 		BrowserModule,

@@ -17,17 +17,18 @@ export class CarouselCrudComponent implements OnInit {
 	}
 
 	loadItems() {
-		this.service.getAllItems().subscribe((data) => {
-			this.items = data;
-		});
+		this.service.getAllItems().subscribe(
+			(data) => {
+				this.items = data;
+			},
+			(error) => {
+				console.error(
+					'Erreur lors de la récupération des éléments.',
+					error
+				);
+			}
+		);
 	}
-
-	updateItem(itemId: number, updatedItem: any) {
-		this.service.updateItem(itemId, updatedItem).subscribe(() => {
-			this.loadItems();
-		});
-	}
-
 	deleteItem(itemId: number) {
 		this.service.deleteItem(itemId).subscribe(() => {
 			this.loadItems();
@@ -35,5 +36,27 @@ export class CarouselCrudComponent implements OnInit {
 	}
 	goToCreatePage(): void {
 		this.router.navigate(['/dashboard/create-carousel-item']);
+	}
+	goToUpdatePage(id: number): void {
+		// if (this.items.length > 0) {
+		// 	const item = this.items[id];
+		// 	console.log(
+		// 		"Valeur de l'ID du premier élément :",
+		// 		item.CarouselItem_id
+		// 	);
+		// 	if (item.CarouselItem_id !== undefined) {
+		// 		const itemId = item.CarouselItem_id;
+		// 		this.service.sendItemId(itemId);
+		// 		this.service.goToUpdatePage(itemId);
+		// 	} else {
+		// 		console.error("La propriété 'id' de l'élément est undefined.");
+		// 	}
+		// } else {
+		// 	console.error("La liste d'éléments est vide.");
+		// }
+		this.service.getItemById(id).subscribe((data) => {
+			console.log('ID avant la navigation :', id);
+			this.router.navigate(['/update-carousel-item', id]);
+		});
 	}
 }
