@@ -3,7 +3,9 @@ const multer = require('multer');
 const storage = multer.diskStorage({
 	destination: './images',
 	filename: function (req, file, cb) {
-		cb(null, file.originalname);
+		// Transform the original filename (replace spaces with hyphens)
+		const transformedFilename = file.originalname.replace(/\s+/g, '-');
+		cb(null, transformedFilename);
 	},
 });
 
@@ -22,7 +24,7 @@ async function uploadImageAndAssociateWithModel(req, res, next, Model) {
 		const newItem = await Model.create({ description });
 		console.log('Nouvel élément créé:', newItem);
 
-		const imageUrl = `http://localhost:3000/images/${req.file.originalname}`;
+		const imageUrl = `http://localhost:3000/images/${req.file.filename}`;
 		console.log("URL de l'image:", imageUrl);
 		console.log('Received file:', req.file);
 

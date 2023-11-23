@@ -12,6 +12,7 @@ export class UpdatecarouselitemComponent {
 	itemId!: number;
 	item!: any;
 	itemForm!: FormGroup;
+	imgUrl!: any;
 	selectedFile!: File;
 
 	constructor(
@@ -36,10 +37,9 @@ export class UpdatecarouselitemComponent {
 		this.service.getItemById(this.itemId).subscribe(
 			(data) => {
 				this.item = data;
-				// Set the initial values in the form
 				this.itemForm.patchValue({
 					description: this.item.description,
-					selectedImage: null, // Assuming you don't want to display the existing image
+					selectedImage: this.item.imgUrl,
 				});
 			},
 			(error) => {

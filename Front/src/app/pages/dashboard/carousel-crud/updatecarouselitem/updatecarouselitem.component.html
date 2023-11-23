@@ -1,5 +1,5 @@
 <div>
-	<h2>Créer un Nouvel Élément du Carrousel</h2>
+	<h2>Modifier un Élément du Carrousel</h2>
 	<form
 		(submit)="onSubmit()"
 		[formGroup]="itemForm">
@@ -7,17 +7,14 @@
 		<input
 			type="file"
 			(change)="onFileSelected($event)"
-			formControlName="selectedImage"
-			[(ngModel)]="item.imgUrl" />
-
+			formControlName="selectedImage" />
 		<label for="description">Description:</label>
 		<textarea
 			id="description"
 			name="description"
 			formControlName="description"
-			[(ngModel)]="item.description"
 			required></textarea>
 
-		<button type="submit">Créer</button>
+		<button type="submit">Modifier</button>
 	</form>
 </div>

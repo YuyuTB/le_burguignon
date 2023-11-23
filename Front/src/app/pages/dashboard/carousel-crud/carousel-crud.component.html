@@ -4,7 +4,11 @@
 	<h2>Liste des Éléments du Carrousel</h2>
 	<ul>
 		<li *ngFor="let item of items">
-			<span>{{ item.imgUrl }}</span>
+			<span
+				><img
+					src="{{ item.imgUrl }}"
+					alt="Image de l'Item"
+			/></span>
 			<span>{{ item.description }}</span>
 			<button (click)="goToUpdatePage(item.CarouselItem_id)">
 				Modifier

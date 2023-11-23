@@ -56,7 +56,7 @@ export class CarouselCrudComponent implements OnInit {
 		// }
 		this.service.getItemById(id).subscribe((data) => {
 			console.log('ID avant la navigation :', id);
-			this.router.navigate(['/update-carousel-item', id]);
+			this.router.navigate(['dashboard/update-carousel-item', id]);
 		});
 	}
 }

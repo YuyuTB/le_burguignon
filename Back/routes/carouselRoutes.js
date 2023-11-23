@@ -13,6 +13,7 @@ router.put(
 	upload.single('selectedImage'),
 	itemController.updateItem
 );
+
 router.delete('/carousel/:CarouselItem_id', itemController.deleteItem);
 
 router.post(
