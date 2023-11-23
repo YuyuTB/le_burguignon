@@ -1,15 +1,32 @@
 const multer = require('multer');
+const { v4: uuidv4 } = require('uuid'); // Importe la fonction v4 d'UUID
+
+const MIME_TYPES = {
+	'image/jpg': 'jpg',
+	'image/jpeg': 'jpg',
+	'image/png': 'png',
+};
 
 const storage = multer.diskStorage({
-	destination: './images',
-	filename: function (req, file, cb) {
-		cb(null, file.originalname);
+	destination: (req, file, callback) => {
+		callback(null, 'images');
+	},
+	filename: (req, file, callback) => {
+		const extension = MIME_TYPES[file.mimetype];
+		const uniqueId = uuidv4();
+		callback(null, uniqueId + '.' + extension);
 	},
 });
 
 const upload = multer({ storage: storage });
 
-async function uploadImageAndAssociateWithModel(req, res, next, Model) {
+async function uploadImageAndAssociateWithModel(
+	req,
+	res,
+	next,
+	Model,
+	identifierField
+) {
 	try {
 		if (!req.file) {
 			console.log('Aucun fichier téléchargé.');
@@ -17,27 +34,25 @@ async function uploadImageAndAssociateWithModel(req, res, next, Model) {
 		}
 
 		const { description } = req.body;
-		console.log('Description:', description);
 
 		const newItem = await Model.create({ description });
-		console.log('Nouvel élément créé:', newItem);
 
-		const imageUrl = `http://localhost:3000/images/${req.file.originalname}`;
-		console.log("URL de l'image:", imageUrl);
-		console.log('Received file:', req.file);
+		const imageUrl = `http://localhost:3000/images/${req.file.filename}`;
 
-		await Model.update(
-			{ imgUrl: imageUrl },
-			{ where: { CarouselItem_id: newItem.CarouselItem_id } }
-		);
-		console.log('Mise à jour réussie.');
+		const updateObject = {};
+		updateObject['imgUrl'] = imageUrl;
+		updateObject[identifierField] = newItem[identifierField];
+
+		await Model.update(updateObject, {
+			where: { [identifierField]: newItem[identifierField] },
+		});
 	} catch (error) {
 		console.error(error);
 		res.status(500).send("Erreur lors du téléchargement de l'image.");
 	}
 }
 
-async function uploadUpdate(req, res, next, Model) {
+async function uploadUpdate(req, res, next, Model, identifierField) {
 	try {
 		if (!req.file) {
 			console.log('Aucun fichier téléchargé.');
@@ -45,9 +60,10 @@ async function uploadUpdate(req, res, next, Model) {
 		}
 
 		const { description } = req.body;
-		const CarouselItem_id = req.params.CarouselItem_id;
 
-		const existingItem = await Model.findByPk(CarouselItem_id);
+		const existingItem = await Model.findOne({
+			where: { [identifierField]: req.params[identifierField] },
+		});
 
 		if (!existingItem) {
 			return res
@@ -55,14 +71,17 @@ async function uploadUpdate(req, res, next, Model) {
 				.send("L'élément à mettre à jour n'a pas été trouvé.");
 		}
 
-		const imageUrl = `http://localhost:3000/images/${req.file.originalname}`;
+		const imageUrl = `http://localhost:3000/images/${req.file.filename}`;
 		console.log("URL de l'image:", imageUrl);
 		console.log('Received file:', req.file);
 
-		await Model.update(
-			{ imgUrl: imageUrl, description: description },
-			{ where: { CarouselItem_id: existingItem.CarouselItem_id } }
-		);
+		const updateObject = {};
+		updateObject['imgUrl'] = imageUrl;
+		updateObject['description'] = description;
+
+		await Model.update(updateObject, {
+			where: { [identifierField]: req.params[identifierField] },
+		});
 
 		console.log('Mise à jour réussie.');
 		res.json({ message: 'Mise à jour réussie.' });

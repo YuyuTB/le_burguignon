@@ -3,12 +3,24 @@
 	<form
 		(submit)="onSubmit()"
 		[formGroup]="itemForm">
-		<label for="image">Image:</label>
+		<label
+			for="image"
+			class="crudImageButton"
+			*ngIf="!imagePreviewUrl"
+			>Sélectionner image</label
+		>
 		<input
 			type="file"
 			(change)="onFileSelected($event)"
-			formControlName="selectedImage" />
-
+			formControlName="selectedImage"
+			style="display: none"
+			id="image" />
+		<label for="image"
+			><img
+				[src]="imagePreviewUrl"
+				alt="Selected Image"
+				*ngIf="imagePreviewUrl"
+		/></label>
 		<label for="description">Description:</label>
 		<textarea
 			id="description"

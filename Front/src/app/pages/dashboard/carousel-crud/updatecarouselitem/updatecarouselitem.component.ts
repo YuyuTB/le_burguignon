@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CarouselItemService } from 'src/services/carouselitem.service';
 
@@ -14,6 +14,7 @@ export class UpdatecarouselitemComponent {
 	itemForm!: FormGroup;
 	imgUrl!: any;
 	selectedFile!: File;
+	imagePreviewUrl: string | ArrayBuffer | null = null;
 
 	constructor(
 		private fb: FormBuilder,
@@ -21,8 +22,8 @@ export class UpdatecarouselitemComponent {
 		private route: ActivatedRoute
 	) {
 		this.itemForm = this.fb.group({
-			selectedImage: [''],
-			description: [''],
+			selectedImage: ['', Validators.required],
+			description: ['', Validators.required],
 		});
 	}
 
@@ -52,6 +53,21 @@ export class UpdatecarouselitemComponent {
 	onFileSelected(event: any): void {
 		const file = event.target.files[0];
 		this.selectedFile = file;
+		this.previewImage();
+	}
+
+	previewImage(): void {
+		if (this.selectedFile) {
+			const reader = new FileReader();
+
+			reader.onload = (e: any) => {
+				// Affecte l'URL de la preview à une propriété dans le composant
+				this.imagePreviewUrl = e.target.result;
+			};
+
+			// Lit le contenu du fichier en tant que Data URL
+			reader.readAsDataURL(this.selectedFile);
+		}
 	}
 
 	onSubmit(): void {

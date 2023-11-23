@@ -1,4 +1,5 @@
 const Item = require('../models/carousel-item');
+const fs = require('fs');
 const {
 	uploadImageAndAssociateWithModel,
 	uploadUpdate,
@@ -36,7 +37,13 @@ const itemController = {
 
 	createItem: async (req, res) => {
 		try {
-			await uploadImageAndAssociateWithModel(req, res, null, Item);
+			await uploadImageAndAssociateWithModel(
+				req,
+				res,
+				null,
+				Item,
+				'CarouselItem_id'
+			);
 		} catch (error) {
 			console.error(error);
 			res.status(500).send(
@@ -49,7 +56,7 @@ const itemController = {
 		const CarouselItem_id = req.params.CarouselItem_id;
 		try {
 			const existingItem = await Item.findByPk(CarouselItem_id);
-			await uploadUpdate(req, res, existingItem, Item);
+			await uploadUpdate(req, res, existingItem, Item, 'CarouselItem_id');
 		} catch (error) {
 			console.error(error);
 			res.status(500).send(
@@ -61,8 +68,17 @@ const itemController = {
 	deleteItem: async (req, res) => {
 		const CarouselItem_id = req.params.CarouselItem_id;
 		try {
-			await Item.destroy({ where: { CarouselItem_id } });
-			res.status(204).end(); // Respond with a status code 204 (No Content)
+			const existingItem = await Item.findByPk(CarouselItem_id);
+			const filename = existingItem.imgUrl
+				? existingItem.imgUrl.split('/images/')[1]
+				: null;
+			fs.unlink('images/' + filename, () => {
+				Item.destroy({ where: { CarouselItem_id } })
+					.then(() => {
+						res.status(200).json({ message: 'Deleted object' });
+					})
+					.catch((error) => res.status(401).json({ error }));
+			});
 		} catch (error) {
 			console.error(error);
 			res.status(500).send(
