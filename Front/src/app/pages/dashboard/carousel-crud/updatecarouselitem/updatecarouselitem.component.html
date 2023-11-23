@@ -4,6 +4,10 @@
 		(submit)="onSubmit()"
 		[formGroup]="itemForm">
 		<label for="image">Image:</label>
+		<img
+			[src]="imgUrl"
+			alt="Selected Image"
+			*ngIf="imgUrl" />
 		<input
 			type="file"
 			(change)="onFileSelected($event)"

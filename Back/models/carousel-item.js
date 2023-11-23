@@ -9,7 +9,7 @@ const CarouselItem = sequelize.define(
 			primaryKey: true,
 			autoIncrement: true,
 		},
-		imgUrl: DataTypes.STRING,
+		imgUrl: { type: DataTypes.STRING, allowNull: true },
 		description: DataTypes.TEXT,
 	},
 	{

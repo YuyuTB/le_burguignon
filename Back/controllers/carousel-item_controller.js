@@ -1,5 +1,8 @@
 const Item = require('../models/carousel-item');
-const { uploadImageAndAssociateWithModel } = require('../utils/imgUpload'); // ajustez le chemin selon votre structure de projet
+const {
+	uploadImageAndAssociateWithModel,
+	uploadUpdate,
+} = require('../utils/imgUpload'); // ajustez le chemin selon votre structure de projet
 
 const itemController = {
 	getAllItems: async (req, res) => {
@@ -43,16 +46,10 @@ const itemController = {
 	},
 
 	updateItem: async (req, res) => {
-		const CarouselItem_id = req.params.itemId;
+		const CarouselItem_id = req.params.CarouselItem_id;
 		try {
 			const existingItem = await Item.findByPk(CarouselItem_id);
-			if (req.file && req.file.originalname !== existingItem.imgUrl) {
-				await uploadImageAndAssociateWithModel(req, res, null, Item);
-			}
-			const updatedItem = await Item.update(req.body, {
-				where: { CarouselItem_id },
-			});
-			res.json(updatedItem);
+			await uploadUpdate(req, res, existingItem, Item);
 		} catch (error) {
 			console.error(error);
 			res.status(500).send(
@@ -62,10 +59,10 @@ const itemController = {
 	},
 
 	deleteItem: async (req, res) => {
-		const CarouselItem_id = req.params.itemId;
+		const CarouselItem_id = req.params.CarouselItem_id;
 		try {
 			await Item.destroy({ where: { CarouselItem_id } });
-			res.send('Item supprimé avec succès.');
+			res.status(204).end(); // Respond with a status code 204 (No Content)
 		} catch (error) {
 			console.error(error);
 			res.status(500).send(

@@ -37,9 +37,10 @@ export class UpdatecarouselitemComponent {
 		this.service.getItemById(this.itemId).subscribe(
 			(data) => {
 				this.item = data;
+				this.imgUrl = this.item.imgUrl;
 				this.itemForm.patchValue({
 					description: this.item.description,
-					selectedImage: this.item.imgUrl,
+					selectedImage: null,
 				});
 			},
 			(error) => {
@@ -57,20 +58,28 @@ export class UpdatecarouselitemComponent {
 		const formData = this.itemForm.value;
 
 		if (this.selectedFile) {
-			// If a new file is selected, update the imgUrl
-			formData.imgUrl = URL.createObjectURL(this.selectedFile);
+			this.service
+				.updateItemWithImage(this.itemId, formData, this.selectedFile)
+				.subscribe(
+					(response) => {
+						console.log('Item updated successfully:', response);
+						this.itemForm.reset();
+					},
+					(error) => {
+						console.error('Error updating item with image:', error);
+					}
+				);
+		} else {
+			// Si aucun nouveau fichier n'est sélectionné, envoyez les données mises à jour au service sans télécharger de fichier
+			this.service.updateItem(this.itemId, formData).subscribe(
+				(response) => {
+					console.log('Item updated successfully:', response);
+					this.itemForm.reset();
+				},
+				(error) => {
+					console.error('Error updating item:', error);
+				}
+			);
 		}
-
-		// Send the updated data to the service
-		this.service.updateItem(this.itemId, formData).subscribe(
-			(response) => {
-				console.log('Item updated successfully:', response);
-				// Reset the form or perform any other necessary actions
-				this.itemForm.reset();
-			},
-			(error) => {
-				console.error('Error updating item:', error);
-			}
-		);
 	}
 }

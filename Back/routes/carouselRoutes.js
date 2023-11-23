@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const itemController = require('../controllers/carousel-item_controller');
-const {
-	upload,
-	uploadImageAndAssociateWithModel,
-} = require('../utils/imgUpload');
+const { upload } = require('../utils/imgUpload');
 
 router.get('/carousel', itemController.getAllItems);
 router.get('/carousel/:CarouselItem_id', itemController.getItemById);

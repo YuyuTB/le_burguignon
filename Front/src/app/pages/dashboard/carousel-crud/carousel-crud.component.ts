@@ -30,10 +30,24 @@ export class CarouselCrudComponent implements OnInit {
 		);
 	}
 	deleteItem(itemId: number) {
-		this.service.deleteItem(itemId).subscribe(() => {
-			this.loadItems();
-		});
+		this.service.deleteItem(itemId).subscribe(
+			(response) => {
+				if (response === null) {
+					console.log('Item deleted successfully.');
+					this.loadItems();
+				} else {
+					console.warn(
+						'Unexpected response after item deletion:',
+						response
+					);
+				}
+			},
+			(error) => {
+				console.error('Error deleting item:', error);
+			}
+		);
 	}
+
 	goToCreatePage(): void {
 		this.router.navigate(['/dashboard/create-carousel-item']);
 	}

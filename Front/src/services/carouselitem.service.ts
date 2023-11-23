@@ -48,9 +48,18 @@ export class CarouselItemService {
 		const uploadData = new FormData();
 		uploadData.append('selectedImage', file);
 		uploadData.append('description', formData.description);
-		const headers = new HttpHeaders();
-		headers.set('Content-Type', 'multipart/form-data');
 
-		return this.http.post(`${this.apiUrl}/upload`, uploadData, { headers });
+		return this.http.post(`${this.apiUrl}/upload`, uploadData);
+	}
+	updateItemWithImage(
+		itemId: number,
+		formData: any,
+		file: File
+	): Observable<any> {
+		const uploadData = new FormData();
+		uploadData.append('selectedImage', file, file.name);
+		uploadData.append('description', formData.description);
+
+		return this.http.put(`${this.apiUrl}/upload/${itemId}`, uploadData);
 	}
 }
