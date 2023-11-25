@@ -16,11 +16,14 @@ import { CreateregularComponent } from './menu-dashboard/cruds/regular-burger-cr
 import { CreatetemporaryComponent } from './menu-dashboard/cruds/temporary-burger-crud/createtemporary/createtemporary.component';
 import { CreatesnackComponent } from './menu-dashboard/cruds/snack-crud/createsnack/createsnack.component';
 import { UpdatecarouselitemComponent } from './carousel-crud/updatecarouselitem/updatecarouselitem.component';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 const routes: Routes = [
 	{
 		path: 'dashboard',
 		component: DashboardComponent,
+		canActivate: [AuthGuard],
+		canActivateChild: [AuthGuard],
 		children: [
 			{
 				path: '',

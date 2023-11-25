@@ -1,5 +1,6 @@
 # Ignorer les fichiers de configuration pour les deux parties (frontend et backend)
-Back/config/config.json
+Back/config/config.js
+Back/config/user.js
 
 # Ignorer les dépendances Node.js (pour éviter de les inclure dans le dépôt)
 Back/node_modules/
