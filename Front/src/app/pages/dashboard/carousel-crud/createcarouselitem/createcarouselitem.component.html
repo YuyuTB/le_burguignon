@@ -1,13 +1,13 @@
-<div>
+<section>
 	<h2>Créer un Nouvel Élément du Carrousel</h2>
 	<form
 		(submit)="onSubmit()"
 		[formGroup]="itemForm">
 		<label
 			for="image"
-			class="crudImageButton"
+			class="crudImageButton label"
 			*ngIf="!imagePreviewUrl"
-			>Sélectionner image</label
+			>Cliquer ici pour sélectionner une image</label
 		>
 		<input
 			type="file"
@@ -15,7 +15,9 @@
 			formControlName="selectedImage"
 			style="display: none"
 			id="image" />
-		<label for="image"
+		<label
+			for="image"
+			class="label"
 			><img
 				[src]="imagePreviewUrl"
 				alt="Selected Image"
@@ -28,6 +30,10 @@
 			formControlName="description"
 			required></textarea>
 
-		<button type="submit">Créer</button>
+		<button
+			type="submit"
+			class="btn">
+			Créer
+		</button>
 	</form>
-</div>
+</section>

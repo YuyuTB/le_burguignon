@@ -1,23 +1,46 @@
-<!-- carousel-list.component.html -->
-
-<div>
+<section>
+	<button
+		class="add btn"
+		(click)="goToCreatePage()">
+		Ajouter un élément
+	</button>
 	<h2>Liste des Éléments du Carrousel</h2>
-	<ul>
-		<li *ngFor="let item of items">
-			<span
-				><img
-					src="{{ item.imgUrl }}"
-					alt="Image de l'Item"
-			/></span>
-			<span>{{ item.description }}</span>
-			<button (click)="goToUpdatePage(item.CarouselItem_id)">
-				Modifier
-			</button>
-			<button (click)="deleteItem(item.CarouselItem_id)">
-				Supprimer
-			</button>
-		</li>
-	</ul>
-
-	<button (click)="goToCreatePage()">Ajouter un Élément</button>
-</div>
+	<div class="table-container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Description</th>
+					<th>Modification</th>
+					<th>Suppression</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					class="row"
+					*ngFor="let item of items">
+					<th>
+						<img
+							src="{{ item.imgUrl }}"
+							alt="Image de l'Item" />
+					</th>
+					<th>{{ item.description }}</th>
+					<th>
+						<button
+							class="btn"
+							(click)="goToUpdatePage(item.CarouselItem_id)">
+							Modifier
+						</button>
+					</th>
+					<th>
+						<button
+							class="btn"
+							(click)="deleteItem(item.CarouselItem_id)">
+							Supprimer
+						</button>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>

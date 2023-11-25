@@ -1,50 +1,56 @@
-footer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #3B3938;
-    padding: 10px;
-    z-index: 2;
+footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: #3b3938;
+	padding: 10px;
+	z-index: 2;
 }
-.footer-nav{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 500px;
-    margin-left: 30px;
+.footer-nav {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 500px;
+	margin-left: 30px;
 }
-.two-contacts{
-    display: flex;
-    flex-direction: row;
+.two-contacts {
+	display: flex;
+	flex-direction: row;
 }
-.contact{
-    display: flex;
-    flex-direction: row;
-    width: 350px;
+.contact {
+	display: flex;
+	flex-direction: row;
+	width: 350px;
 }
-fa-icon, .contact-text{
-    font-size: 1.4rem;
+fa-icon,
+.contact-text {
+	font-size: 1.4rem;
 }
-fa-icon{
-    color: rgb(255, 211, 44, 95%);
-    display: flex;
-    align-self: center;
-    margin: 0 10px;
+fa-icon {
+	color: rgb(255, 211, 44, 95%);
+	display: flex;
+	align-self: center;
+	margin: 0 10px;
 }
-p{
-    margin: 0;
-    font-size: 1.2rem;
+p {
+	margin: 0;
+	font-size: 1.2rem;
 }
-p, h3{
-    color: white;
+p,
+h3 {
+	color: white;
 }
-h3{
-    font-size: 1.4rem;
-    margin: 0;
+h3 {
+	font-size: 1.4rem;
+	margin: 0;
 }
-.open{
-    margin-right: 30px;
+
+a {
+	text-decoration: none;
 }
-a{
-    text-decoration: none;
+.login {
+	margin-right: 20px;
+	&:hover {
+		cursor: pointer;
+	}
 }

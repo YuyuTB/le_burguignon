@@ -93,6 +93,7 @@ export class UpdatecarouselitemComponent {
 				(response) => {
 					console.log('Item updated successfully:', response);
 					this.itemForm.reset();
+					this.router.navigate(['/dashboard/carousel-crud']);
 				},
 				(error) => {
 					console.error('Error updating item:', error);

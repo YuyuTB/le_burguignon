@@ -1,25 +1,38 @@
-<!-- login.component.html -->
-<div>
-	<h2>Connexion</h2>
-	<form (ngSubmit)="onSubmit()">
-		<div>
-			<label for="username">Nom d'utilisateur :</label>
-			<input
-				type="text"
-				id="username"
-				[(ngModel)]="username"
-				name="username"
-				required />
-		</div>
-		<div>
-			<label for="password">Mot de passe :</label>
-			<input
-				type="password"
-				id="password"
-				[(ngModel)]="password"
-				name="password"
-				required />
-		</div>
-		<button type="submit">Se Connecter</button>
-	</form>
-</div>
+<section class="login">
+	<img
+		src="assets/images/logo_large.png"
+		alt="logo burguignon" />
+	<div class="formDiv">
+		<h2>Connexion</h2>
+		<form (ngSubmit)="onSubmit()">
+			<div class="form">
+				<label for="username">Identifiant</label>
+				<input
+					type="text"
+					id="username"
+					[(ngModel)]="username"
+					name="username"
+					required />
+			</div>
+			<div class="form">
+				<label for="password">Mot de passe</label>
+				<input
+					type="password"
+					id="password"
+					[(ngModel)]="password"
+					name="password"
+					required />
+			</div>
+			<button
+				type="submit"
+				class="submit">
+				Se Connecter
+			</button>
+		</form>
+	</div>
+	<p
+		class="wrong"
+		*ngIf="wrong">
+		Identifiants incorrects
+	</p>
+</section>

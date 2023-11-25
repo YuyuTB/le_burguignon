@@ -1,21 +1,30 @@
-<div>
+<section>
 	<h2>Modifier un Élément du Carrousel</h2>
 	<form
 		(submit)="onSubmit()"
 		[formGroup]="itemForm">
-		<label for="image">Image:</label>
-		<img
-			[src]="imgUrl"
-			alt="Selected Image"
-			*ngIf="!imagePreviewUrl" />
-		<img
-			[src]="imagePreviewUrl"
-			alt="Selected Image"
-			*ngIf="imagePreviewUrl" />
+		<label
+			for="image"
+			class="label"
+			><img
+				[src]="imgUrl"
+				alt="Selected Image"
+				*ngIf="!imagePreviewUrl && imgUrl"
+		/></label>
 		<input
 			type="file"
 			(change)="onFileSelected($event)"
-			formControlName="selectedImage" />
+			formControlName="selectedImage"
+			style="display: none"
+			id="image" />
+		<label
+			for="image"
+			class="label"
+			><img
+				[src]="imagePreviewUrl"
+				alt="Selected Image"
+				*ngIf="imagePreviewUrl"
+		/></label>
 		<label for="description">Description:</label>
 		<textarea
 			id="description"
@@ -23,6 +32,10 @@
 			formControlName="description"
 			required></textarea>
 
-		<button type="submit">Modifier</button>
+		<button
+			type="submit"
+			class="button">
+			Modifier
+		</button>
 	</form>
-</div>
+</section>

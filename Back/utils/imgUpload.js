@@ -56,8 +56,18 @@ async function uploadImageAndAssociateWithModel(
 async function uploadUpdate(req, res, next, Model, identifierField) {
 	try {
 		if (!req.file) {
+			// Gérez ici le cas où aucune nouvelle image n'est téléchargée
 			console.log('Aucun fichier téléchargé.');
-			return res.status(400).send('Aucun fichier téléchargé.');
+			const { description } = req.body;
+			const updateObject = { description };
+
+			await Model.update(updateObject, {
+				where: { [identifierField]: req.params[identifierField] },
+			});
+
+			return res.json({
+				message: "Mise à jour réussie sans changement d'image.",
+			});
 		}
 
 		const { description } = req.body;
@@ -73,15 +83,16 @@ async function uploadUpdate(req, res, next, Model, identifierField) {
 		}
 
 		const imageUrl = `http://localhost:3000/images/${req.file.filename}`;
-		const updateObject = {};
-		updateObject['imgUrl'] = imageUrl;
-		updateObject['description'] = description;
+		const updateObject = {
+			imgUrl: imageUrl,
+			description: description,
+		};
 
 		await Model.update(updateObject, {
 			where: { [identifierField]: req.params[identifierField] },
 		});
 
-		res.json({ message: 'Mise à jour réussie.' });
+		res.json({ message: "Mise à jour réussie avec changement d'image." });
 	} catch (error) {
 		console.error(error);
 		res.status(500).send("Erreur lors de la mise à jour de l'image.");

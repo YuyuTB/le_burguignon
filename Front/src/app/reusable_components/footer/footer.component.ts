@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faEnvelope, faGear } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faSnapchat } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
@@ -12,5 +12,6 @@ export class FooterComponent {
 	faEnvelope = faEnvelope;
 	faInstagram = faInstagram;
 	faSnapchat = faSnapchat;
+	faGear = faGear;
 	mail = 'contact@burguignon.fr';
 }

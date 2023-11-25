@@ -10,6 +10,7 @@ import { AuthService } from 'src/services/auth.service';
 export class LoginComponent {
 	username: string = '';
 	password: string = '';
+	wrong: boolean = false;
 
 	constructor(private authService: AuthService, private router: Router) {}
 
@@ -21,6 +22,7 @@ export class LoginComponent {
 			},
 			(error) => {
 				console.error('Erreur de connexion :', error); // Gère les erreurs de connexion
+				this.wrong = true;
 			}
 		);
 	}
