@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarouselItemService } from 'src/services/carouselitem.service';
 
 @Component({
@@ -19,7 +19,8 @@ export class UpdatecarouselitemComponent {
 	constructor(
 		private fb: FormBuilder,
 		private service: CarouselItemService,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private router: Router
 	) {
 		this.itemForm = this.fb.group({
 			selectedImage: ['', Validators.required],
@@ -80,6 +81,7 @@ export class UpdatecarouselitemComponent {
 					(response) => {
 						console.log('Item updated successfully:', response);
 						this.itemForm.reset();
+						this.router.navigate(['/dashboard/carousel-crud']);
 					},
 					(error) => {
 						console.error('Error updating item with image:', error);

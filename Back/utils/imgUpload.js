@@ -46,6 +46,7 @@ async function uploadImageAndAssociateWithModel(
 		await Model.update(updateObject, {
 			where: { [identifierField]: newItem[identifierField] },
 		});
+		res.json({ message: 'Téléchargement réussi.' });
 	} catch (error) {
 		console.error(error);
 		res.status(500).send("Erreur lors du téléchargement de l'image.");
@@ -72,9 +73,6 @@ async function uploadUpdate(req, res, next, Model, identifierField) {
 		}
 
 		const imageUrl = `http://localhost:3000/images/${req.file.filename}`;
-		console.log("URL de l'image:", imageUrl);
-		console.log('Received file:', req.file);
-
 		const updateObject = {};
 		updateObject['imgUrl'] = imageUrl;
 		updateObject['description'] = description;
@@ -83,7 +81,6 @@ async function uploadUpdate(req, res, next, Model, identifierField) {
 			where: { [identifierField]: req.params[identifierField] },
 		});
 
-		console.log('Mise à jour réussie.');
 		res.json({ message: 'Mise à jour réussie.' });
 	} catch (error) {
 		console.error(error);

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 import { CarouselItemService } from 'src/services/carouselitem.service';
 
 @Component({
@@ -12,7 +14,11 @@ export class CreatecarouselitemComponent {
 	selectedFile!: File;
 	imagePreviewUrl: string | ArrayBuffer | null = null;
 
-	constructor(private fb: FormBuilder, private service: CarouselItemService) {
+	constructor(
+		private fb: FormBuilder,
+		private service: CarouselItemService,
+		private router: Router
+	) {
 		this.itemForm = this.fb.group({
 			selectedImage: ['', Validators.required],
 			description: ['', Validators.required],
@@ -41,22 +47,17 @@ export class CreatecarouselitemComponent {
 	onSubmit(): void {
 		const formData = this.itemForm.value;
 
-		formData.imgUrl = this.selectedFile
-			? URL.createObjectURL(this.selectedFile)
-			: null;
-		formData.description = formData.description || null;
-		// Send both description and imgUrl to the service
 		if (this.selectedFile) {
 			this.service
 				.createItemWithImage(formData, this.selectedFile)
 				.subscribe(
 					(response) => {
-						console.log('Item created successfully:', response);
-						// Reset the form or perform any other necessary actions
+						console.log('Item updated successfully:', response);
 						this.itemForm.reset();
+						this.router.navigate(['/dashboard/carousel-crud']);
 					},
 					(error) => {
-						console.error('Error creating item:', error);
+						console.error('Error updating item with image:', error);
 					}
 				);
 		}
