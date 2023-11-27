@@ -2,22 +2,22 @@
 	<h2>Besoin d'un renseignement?</h2>
 	<div class="form">
 		<form
-			[formGroup]="contactForm"
+			[formGroup]="itemForm"
 			(ngSubmit)="onSubmit()">
 			<div class="name">
 				<div class="short-container">
-					<label for="firstname">Prénom</label>
+					<label for="firstName">Prénom</label>
 					<input
 						type="text"
-						id="firstname"
-						formControlName="firstname" />
+						id="firstName"
+						formControlName="firstName" />
 				</div>
 				<div class="short-container">
-					<label for="lastname">Nom</label>
+					<label for="lastName">Nom</label>
 					<input
 						type="text"
-						id="lastname"
-						formControlName="lastname" />
+						id="lastName"
+						formControlName="lastName" />
 				</div>
 			</div>
 			<div class="long-container">
@@ -39,6 +39,7 @@
 				class="button">
 				Envoyer
 			</button>
+			<p *ngIf="message">{{ this.message }}</p>
 		</form>
 		<img
 			src="assets/images/logo_small.png"

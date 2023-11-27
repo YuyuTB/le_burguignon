@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../app.js');
+const sequelize = require('../config/sequelize');
 
 const TemporaryBurger = sequelize.define(
 	'temporaryburger',
@@ -12,7 +12,6 @@ const TemporaryBurger = sequelize.define(
 		name: Sequelize.DataTypes.STRING,
 		imgUrl: Sequelize.DataTypes.STRING,
 		description: Sequelize.DataTypes.TEXT,
-		isActive: Sequelize.DataTypes.BOOLEAN,
 	},
 	{
 		freezeTableName: true,

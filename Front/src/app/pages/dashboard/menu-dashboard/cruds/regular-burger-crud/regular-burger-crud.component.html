@@ -1,0 +1,48 @@
+<section>
+	<button
+		class="add btn"
+		(click)="goToCreatePage()">
+		Ajouter un élément
+	</button>
+	<h2>Liste des burgers permanents</h2>
+	<div class="table-container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Image</th>
+					<th>Description</th>
+					<th>Modification</th>
+					<th>Suppression</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					class="row"
+					*ngFor="let item of items">
+					<th>{{ item.name }}</th>
+					<th>
+						<img
+							src="{{ item.imgUrl }}"
+							alt="Image de l'Item" />
+					</th>
+					<th>{{ item.description }}</th>
+					<th>
+						<button
+							class="btn"
+							(click)="goToUpdatePage(item.RegularBurger_id)">
+							Modifier
+						</button>
+					</th>
+					<th>
+						<button
+							class="btn"
+							(click)="deleteItem(item.RegularBurger_id)">
+							Supprimer
+						</button>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>

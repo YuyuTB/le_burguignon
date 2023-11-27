@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../app.js');
+const sequelize = require('../config/sequelize');
 
 const Dessert = sequelize.define(
 	'dessert',
@@ -12,7 +12,6 @@ const Dessert = sequelize.define(
 		name: Sequelize.DataTypes.STRING,
 		imgUrl: Sequelize.DataTypes.STRING,
 		description: Sequelize.DataTypes.TEXT,
-		isActive: Sequelize.DataTypes.BOOLEAN,
 	},
 	{
 		freezeTableName: true,

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../app.js');
+const sequelize = require('../config/sequelize');
 
 const Snack = sequelize.define(
 	'snack',

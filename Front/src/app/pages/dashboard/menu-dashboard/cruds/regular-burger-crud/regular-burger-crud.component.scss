@@ -1,0 +1,55 @@
+section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.add {
+	display: flex;
+	align-self: flex-end;
+
+	margin: 5px 5px 0 0;
+}
+.btn {
+	background-color: rgb(255, 211, 44, 95%);
+	padding: 5px 15px;
+	border: 0;
+	border-radius: 20px;
+	font-weight: bold;
+	font-size: 1rem;
+	&:hover {
+		cursor: pointer;
+	}
+}
+img {
+	height: 150px;
+	width: 150px;
+	object-fit: cover;
+}
+.table-container {
+	margin: 20px;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.table th,
+.table td {
+	border: 1px solid #ddd;
+	padding: 12px;
+}
+
+.table th {
+	background-color: #3b3938;
+	text-align: center;
+	width: 400px;
+}
+tr {
+	color: white;
+	font-size: 1.2rem;
+}
+.row th {
+	background-color: #3b3938e1;
+}

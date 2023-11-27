@@ -1,0 +1,33 @@
+<section>
+	<h2>Messages des clients</h2>
+	<div class="table-container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Prénom</th>
+					<th>Nom</th>
+					<th>Email</th>
+					<th>Message</th>
+					<th>Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					class="row"
+					*ngFor="let item of items">
+					<th>{{ item.firstName }}</th>
+					<th>{{ item.lastName }}</th>
+					<th>{{ item.email }}</th>
+					<th>{{ item.message }}</th>
+					<th>
+						<button
+							class="btn"
+							(click)="deleteItem(item.Contact_id)">
+							Supprimer
+						</button>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>

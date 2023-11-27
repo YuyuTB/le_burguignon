@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../app.js');
+const sequelize = require('../config/sequelize');
 
 const Contact = sequelize.define(
 	'contact',
@@ -16,7 +16,7 @@ const Contact = sequelize.define(
 	},
 	{
 		freezeTableName: true,
-		timestamps: true,
+		timestamps: false,
 	}
 );
 module.exports = Contact;

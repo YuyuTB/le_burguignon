@@ -5,6 +5,8 @@ const carouselRoutes = require('./routes/carouselRoutes');
 const cors = require('cors');
 const path = require('path');
 const authController = require('./controllers/login_controller');
+const contactRoutes = require('./routes/contactRoutes');
+const regularRoutes = require('./routes/regularRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,6 +30,8 @@ app.use(cors(corsOptions));
 app.post('/api/login', authController.login);
 app.use('/images', express.static(path.join(__dirname, './images')));
 app.use('/api', carouselRoutes);
+app.use('/api', contactRoutes);
+app.use('/api', regularRoutes);
 
 app.listen(PORT, () => {
 	console.log('Server is running on port 3000');

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ContactService } from 'src/services/contact.service';
 
 @Component({
 	selector: 'app-contact-crud',
@@ -6,24 +7,41 @@ import { Component } from '@angular/core';
 	styleUrls: ['./contact-crud.component.scss'],
 })
 export class ContactCrudComponent {
-	items = [
-		{
-			id: 1,
-			firstName: 'first',
-			lastName: 'last',
-			email: 'mail',
-			message: 'message',
-			isAlterable: false,
-		},
-	];
-	onItemSelected(item: any) {
-		// Logique lorsque l'élément est sélectionné
-		console.log('Element sélectionné :', item);
+	items: any[] = [];
+	constructor(private service: ContactService) {}
+	ngOnInit(): void {
+		this.loadItems();
 	}
 
-	onItemDeleted(index: number) {
-		// Logique lorsque l'élément est supprimé
-		console.log("Element supprimé à l'index :", index);
-		this.items.splice(index, 1); // Supprime l'élément du tableau
+	loadItems() {
+		this.service.getAllItems().subscribe(
+			(data) => {
+				this.items = data;
+			},
+			(error) => {
+				console.error(
+					'Erreur lors de la récupération des éléments.',
+					error
+				);
+			}
+		);
+	}
+	deleteItem(itemId: number) {
+		this.service.deleteItem(itemId).subscribe(
+			(response) => {
+				if (response.message === 'Deleted object') {
+					console.log('Item deleted successfully.');
+					this.loadItems();
+				} else {
+					console.warn(
+						'Unexpected response after item deletion:',
+						response
+					);
+				}
+			},
+			(error) => {
+				console.error('Error deleting item:', error);
+			}
+		);
 	}
 }

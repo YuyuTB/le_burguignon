@@ -3,6 +3,7 @@ header {
 	grid-template-columns: repeat(3, 1fr);
 	gap: 20px;
 	background-color: #3b3938;
+	position: fixed;
 }
 .navbar-logo {
 	width: 70%;

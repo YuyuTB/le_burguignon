@@ -17,6 +17,7 @@ import { CreatetemporaryComponent } from './menu-dashboard/cruds/temporary-burge
 import { CreatesnackComponent } from './menu-dashboard/cruds/snack-crud/createsnack/createsnack.component';
 import { UpdatecarouselitemComponent } from './carousel-crud/updatecarouselitem/updatecarouselitem.component';
 import { AuthGuard } from 'src/guards/auth.guard';
+import { UpdateregularComponent } from './menu-dashboard/cruds/regular-burger-crud/updateregular/updateregular.component';
 
 const routes: Routes = [
 	{
@@ -66,6 +67,10 @@ const routes: Routes = [
 			{
 				path: 'update-carousel-item/:id',
 				component: UpdatecarouselitemComponent,
+			},
+			{
+				path: 'update-regular/:id',
+				component: UpdateregularComponent,
 			},
 		],
 	},

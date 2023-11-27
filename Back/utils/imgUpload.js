@@ -43,6 +43,10 @@ async function uploadImageAndAssociateWithModel(
 		updateObject['imgUrl'] = imageUrl;
 		updateObject[identifierField] = newItem[identifierField];
 
+		if (req.body.name !== null && req.body.name !== undefined) {
+			updateObject['name'] = req.body.name;
+		}
+
 		await Model.update(updateObject, {
 			where: { [identifierField]: newItem[identifierField] },
 		});
@@ -60,6 +64,9 @@ async function uploadUpdate(req, res, next, Model, identifierField) {
 			console.log('Aucun fichier téléchargé.');
 			const { description } = req.body;
 			const updateObject = { description };
+			if (req.body.name !== null && req.body.name !== undefined) {
+				updateObject['name'] = req.body.name;
+			}
 
 			await Model.update(updateObject, {
 				where: { [identifierField]: req.params[identifierField] },
@@ -87,6 +94,9 @@ async function uploadUpdate(req, res, next, Model, identifierField) {
 			imgUrl: imageUrl,
 			description: description,
 		};
+		if (req.body.name !== null && req.body.name !== undefined) {
+			updateObject['name'] = req.body.name;
+		}
 
 		await Model.update(updateObject, {
 			where: { [identifierField]: req.params[identifierField] },
