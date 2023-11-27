@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { TemporaryService } from 'src/services/temporary.service';
 
 @Component({
 	selector: 'app-temporary-burger-crud',
@@ -6,17 +8,53 @@ import { Component } from '@angular/core';
 	styleUrls: ['./temporary-burger-crud.component.scss'],
 })
 export class TemporaryBurgerCrudComponent {
-	items = [
-		{ id: 1, name: 'Burg 1', desc: 'Burg', isActive: true, isAlterable: true },
-	];
-	onItemSelected(item: any) {
-		// Logique lorsque l'élément est sélectionné
-		console.log('Element sélectionné :', item);
+	items: any[] = [];
+
+	constructor(private router: Router, private service: TemporaryService) {}
+
+	ngOnInit(): void {
+		this.loadItems();
 	}
 
-	onItemDeleted(index: number) {
-		// Logique lorsque l'élément est supprimé
-		console.log("Element supprimé à l'index :", index);
-		this.items.splice(index, 1); // Supprime l'élément du tableau
+	loadItems() {
+		this.service.getAllItems().subscribe(
+			(data) => {
+				this.items = data;
+			},
+			(error) => {
+				console.error(
+					'Erreur lors de la récupération des éléments.',
+					error
+				);
+			}
+		);
+	}
+	deleteItem(itemId: number) {
+		this.service.deleteItem(itemId).subscribe(
+			(response) => {
+				if (response.message === 'Deleted object') {
+					console.log('Item deleted successfully.');
+					this.loadItems();
+				} else {
+					console.warn(
+						'Unexpected response after item deletion:',
+						response
+					);
+				}
+			},
+			(error) => {
+				console.error('Error deleting item:', error);
+			}
+		);
+	}
+
+	goToCreatePage(): void {
+		this.router.navigate(['/dashboard/create-temporary']);
+	}
+	goToUpdatePage(id: number): void {
+		this.service.getItemById(id).subscribe((data) => {
+			console.log('ID avant la navigation :', id);
+			this.router.navigate(['dashboard/update-temporary', id]);
+		});
 	}
 }

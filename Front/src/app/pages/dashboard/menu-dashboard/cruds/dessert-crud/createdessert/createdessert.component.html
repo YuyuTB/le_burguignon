@@ -1,1 +1,45 @@
-<p>createdessert works!</p>
+<section>
+	<h2>Ajouter le dessert du moment</h2>
+	<form
+		(submit)="onSubmit()"
+		[formGroup]="itemForm">
+		<label for="name">Nom :</label>
+		<input
+			id="name"
+			type="text"
+			class="name"
+			formControlName="name" />
+		<label
+			for="image"
+			class="crudImageButton label"
+			*ngIf="!imagePreviewUrl"
+			>Cliquer ici pour sélectionner une image</label
+		>
+		<input
+			type="file"
+			(change)="onFileSelected($event)"
+			formControlName="selectedImage"
+			style="display: none"
+			id="image" />
+		<label
+			for="image"
+			class="label"
+			><img
+				[src]="imagePreviewUrl"
+				alt="Selected Image"
+				*ngIf="imagePreviewUrl"
+		/></label>
+		<label for="description">Description:</label>
+		<textarea
+			id="description"
+			name="description"
+			formControlName="description"
+			required></textarea>
+
+		<button
+			type="submit"
+			class="btn">
+			Créer
+		</button>
+	</form>
+</section>

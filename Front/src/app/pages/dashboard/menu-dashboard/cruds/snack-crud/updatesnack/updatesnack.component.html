@@ -1,9 +1,9 @@
 <section>
-	<h2>Ajouter un snack</h2>
+	<h2>Modifier un snack</h2>
 	<form
 		(submit)="onSubmit()"
 		[formGroup]="itemForm">
-		<label for="name">Nom :</label>
+		<label for="name">Nom</label>
 		<input
 			id="name"
 			type="text"
@@ -11,10 +11,12 @@
 			formControlName="name" />
 		<label
 			for="image"
-			class="crudImageButton label"
-			*ngIf="!imagePreviewUrl"
-			>Cliquer ici pour sélectionner une image</label
-		>
+			class="label"
+			><img
+				[src]="imgUrl"
+				alt="Selected Image"
+				*ngIf="!imagePreviewUrl && imgUrl"
+		/></label>
 		<input
 			type="file"
 			(change)="onFileSelected($event)"
@@ -38,8 +40,8 @@
 
 		<button
 			type="submit"
-			class="btn">
-			Créer
+			class="button">
+			Modifier
 		</button>
 	</form>
 </section>

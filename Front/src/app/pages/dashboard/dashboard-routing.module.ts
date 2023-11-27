@@ -18,6 +18,10 @@ import { CreatesnackComponent } from './menu-dashboard/cruds/snack-crud/createsn
 import { UpdatecarouselitemComponent } from './carousel-crud/updatecarouselitem/updatecarouselitem.component';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { UpdateregularComponent } from './menu-dashboard/cruds/regular-burger-crud/updateregular/updateregular.component';
+import { UpdatesnackComponent } from './menu-dashboard/cruds/snack-crud/updatesnack/updatesnack.component';
+import { UpdatedrinkComponent } from 'src/app/pages/dashboard/menu-dashboard/cruds/drink-crud/updatedrink/updatedrink.component';
+import { UpdatedessertComponent } from 'src/app/pages/dashboard/menu-dashboard/cruds/dessert-crud/updatedessert/updatedessert.component';
+import { UpdatetemporaryComponent } from 'src/app/pages/dashboard/menu-dashboard/cruds/temporary-burger-crud/updatetemporary/updatetemporary.component';
 
 const routes: Routes = [
 	{
@@ -71,6 +75,22 @@ const routes: Routes = [
 			{
 				path: 'update-regular/:id',
 				component: UpdateregularComponent,
+			},
+			{
+				path: 'update-snack/:id',
+				component: UpdatesnackComponent,
+			},
+			{
+				path: 'update-drink/:id',
+				component: UpdatedrinkComponent,
+			},
+			{
+				path: 'update-dessert/:id',
+				component: UpdatedessertComponent,
+			},
+			{
+				path: 'update-temporary/:id',
+				component: UpdatetemporaryComponent,
 			},
 		],
 	},

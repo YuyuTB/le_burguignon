@@ -1,12 +1,13 @@
 nav {
 	background-color: #3b3938;
-	height: 90vh;
+	height: 100vh;
 	width: 200px;
 	border: 1px black solid;
 	display: flex;
 	flex-direction: column;
 	position: fixed;
-	top: 10%;
+	top: 0;
+	padding-top: 100px;
 }
 a {
 	text-decoration: none;

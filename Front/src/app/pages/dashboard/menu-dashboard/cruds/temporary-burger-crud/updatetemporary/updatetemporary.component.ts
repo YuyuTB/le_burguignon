@@ -1,28 +1,55 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TemporaryService } from 'src/services/temporary.service';
-
 @Component({
-	selector: 'app-createtemporary',
-	templateUrl: './createtemporary.component.html',
-	styleUrls: ['./createtemporary.component.scss'],
+	selector: 'app-updatetemporary',
+	templateUrl: './updatetemporary.component.html',
+	styleUrls: ['./updatetemporary.component.scss'],
 })
-export class CreatetemporaryComponent {
+export class UpdatetemporaryComponent {
+	itemId!: number;
+	item!: any;
 	itemForm!: FormGroup;
+	imgUrl!: any;
 	selectedFile!: File;
 	imagePreviewUrl: string | ArrayBuffer | null = null;
 
 	constructor(
 		private fb: FormBuilder,
 		private service: TemporaryService,
+		private route: ActivatedRoute,
 		private router: Router
 	) {
 		this.itemForm = this.fb.group({
-			selectedImage: ['', Validators.required],
+			selectedImage: [null],
 			description: ['', Validators.required],
 			name: ['', Validators.required],
 		});
+	}
+
+	ngOnInit(): void {
+		this.route.params.subscribe((params) => {
+			this.itemId = +params['id'];
+			this.getItemDetails();
+		});
+	}
+
+	getItemDetails() {
+		this.service.getItemById(this.itemId).subscribe(
+			(data) => {
+				this.item = data;
+				this.imgUrl = this.item.imgUrl;
+				this.itemForm.patchValue({
+					description: this.item.description,
+					selectedImage: null,
+					name: this.item.name,
+				});
+			},
+			(error) => {
+				console.error(error);
+			}
+		);
 	}
 
 	onFileSelected(event: any): void {
@@ -44,12 +71,13 @@ export class CreatetemporaryComponent {
 			reader.readAsDataURL(this.selectedFile);
 		}
 	}
+
 	onSubmit(): void {
 		const formData = this.itemForm.value;
 
 		if (this.selectedFile) {
 			this.service
-				.createItemWithImage(formData, this.selectedFile)
+				.updateItemWithImage(this.itemId, formData, this.selectedFile)
 				.subscribe(
 					(response) => {
 						console.log('Item updated successfully:', response);
@@ -62,6 +90,20 @@ export class CreatetemporaryComponent {
 						console.error('Error updating item with image:', error);
 					}
 				);
+		} else {
+			// Si aucun nouveau fichier n'est sélectionné, envoyez les données mises à jour au service sans télécharger de fichier
+			this.service.updateItem(this.itemId, formData).subscribe(
+				(response) => {
+					console.log('Item updated successfully:', response);
+					this.itemForm.reset();
+					this.router.navigate([
+						'/dashboard/menu/temporary-burger-crud',
+					]);
+				},
+				(error) => {
+					console.error('Error updating item:', error);
+				}
+			);
 		}
 	}
 }

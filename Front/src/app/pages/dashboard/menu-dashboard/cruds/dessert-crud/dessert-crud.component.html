@@ -1,0 +1,30 @@
+<section>
+	<button
+		class="btn"
+		(click)="goToCreatePage()"
+		*ngIf="this.items.length === 0">
+		Ajouter un élément
+	</button>
+	<h2>Dessert du moment</h2>
+	<div
+		*ngFor="let item of items"
+		class="card">
+		<p>{{ item.name }}</p>
+		<img
+			src="{{ item.imgUrl }}"
+			alt="Image de l'Item" />
+		<p>{{ item.description }}</p>
+		<div>
+			<button
+				class="btn"
+				(click)="goToUpdatePage(item.Dessert_id)">
+				Modifier
+			</button>
+			<button
+				class="btn"
+				(click)="deleteItem(item.Dessert_id)">
+				Supprimer
+			</button>
+		</div>
+	</div>
+</section>

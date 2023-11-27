@@ -1,28 +1,56 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DessertService } from 'src/services/dessert.service';
 
 @Component({
-	selector: 'app-createdessert',
-	templateUrl: './createdessert.component.html',
-	styleUrls: ['./createdessert.component.scss'],
+	selector: 'app-updatedessert',
+	templateUrl: './updatedessert.component.html',
+	styleUrls: ['./updatedessert.component.scss'],
 })
-export class CreatedessertComponent {
+export class UpdatedessertComponent {
+	itemId!: number;
+	item!: any;
 	itemForm!: FormGroup;
+	imgUrl!: any;
 	selectedFile!: File;
 	imagePreviewUrl: string | ArrayBuffer | null = null;
 
 	constructor(
 		private fb: FormBuilder,
 		private service: DessertService,
+		private route: ActivatedRoute,
 		private router: Router
 	) {
 		this.itemForm = this.fb.group({
-			selectedImage: ['', Validators.required],
+			selectedImage: [null],
 			description: ['', Validators.required],
 			name: ['', Validators.required],
 		});
+	}
+
+	ngOnInit(): void {
+		this.route.params.subscribe((params) => {
+			this.itemId = +params['id'];
+			this.getItemDetails();
+		});
+	}
+
+	getItemDetails() {
+		this.service.getItemById(this.itemId).subscribe(
+			(data) => {
+				this.item = data;
+				this.imgUrl = this.item.imgUrl;
+				this.itemForm.patchValue({
+					description: this.item.description,
+					selectedImage: null,
+					name: this.item.name,
+				});
+			},
+			(error) => {
+				console.error(error);
+			}
+		);
 	}
 
 	onFileSelected(event: any): void {
@@ -44,12 +72,13 @@ export class CreatedessertComponent {
 			reader.readAsDataURL(this.selectedFile);
 		}
 	}
+
 	onSubmit(): void {
 		const formData = this.itemForm.value;
 
 		if (this.selectedFile) {
 			this.service
-				.createItemWithImage(formData, this.selectedFile)
+				.updateItemWithImage(this.itemId, formData, this.selectedFile)
 				.subscribe(
 					(response) => {
 						console.log('Item updated successfully:', response);
@@ -60,6 +89,18 @@ export class CreatedessertComponent {
 						console.error('Error updating item with image:', error);
 					}
 				);
+		} else {
+			// Si aucun nouveau fichier n'est sélectionné, envoyez les données mises à jour au service sans télécharger de fichier
+			this.service.updateItem(this.itemId, formData).subscribe(
+				(response) => {
+					console.log('Item updated successfully:', response);
+					this.itemForm.reset();
+					this.router.navigate(['/dashboard/menu/dessert-crud']);
+				},
+				(error) => {
+					console.error('Error updating item:', error);
+				}
+			);
 		}
 	}
 }
