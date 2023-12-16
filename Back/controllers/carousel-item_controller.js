@@ -55,6 +55,10 @@ const itemController = {
 	updateItem: async (req, res) => {
 		const CarouselItem_id = req.params.CarouselItem_id;
 		try {
+			const filename = existingItem.imgUrl
+				? existingItem.imgUrl.split('/images/')[1]
+				: null;
+
 			const existingItem = await Item.findByPk(CarouselItem_id);
 			await uploadUpdate(req, res, existingItem, Item, 'CarouselItem_id');
 		} catch (error) {

@@ -12,12 +12,10 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { HeaderComponent } from './reusable_components/header/header.component';
 import { FooterComponent } from './reusable_components/footer/footer.component';
 import { OrderingComponent } from './pages/ordering/ordering.component';
-import { MenuCardComponent } from './reusable_components/menu-card/menu-card.component';
 import { CarouselComponent } from './reusable_components/carousel/carousel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { DescriptiveCardComponent } from './reusable_components/descriptive-card/descriptive-card.component';
-import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DashboardHeaderComponent } from './pages/dashboard/dashboard-header/dashboard-header.component';
@@ -58,9 +56,7 @@ import { UpdatedessertComponent } from './pages/dashboard/menu-dashboard/cruds/d
 		HeaderComponent,
 		FooterComponent,
 		OrderingComponent,
-		MenuCardComponent,
 		CarouselComponent,
-		DescriptiveCardComponent,
 		LoginComponent,
 		DashboardComponent,
 		DashboardHeaderComponent,

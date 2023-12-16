@@ -24,11 +24,11 @@ a:hover {
 .button,
 h1,
 h3,
+a,
 label {
 	font-family: 'Open Sans', sans-serif;
 }
 h2,
-a,
 p,
 h4 {
 	font-family: 'Poppins', sans-serif;
@@ -48,4 +48,56 @@ p,
 li,
 h4 {
 	font-size: 1.2rem;
+}
+
+.desc-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	.p-desc {
+		color: white;
+		text-align: center;
+		margin-bottom: 40px;
+		width: 500px;
+	}
+	.img-desc {
+		height: 300px;
+		width: 450px;
+		object-fit: cover;
+		margin: 0 10px;
+	}
+}
+.h4-card {
+	color: white;
+	text-align: center;
+	margin-bottom: 40px;
+}
+.img-card {
+	height: 300px;
+	width: 300px;
+	object-fit: cover;
+	margin: 0 40px;
+}
+.menu-wrapper {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 20px 300px;
+}
+.desc-cut {
+	max-width: 400px;
+	span {
+		word-wrap: break-word;
+	}
+}
+.desc-cut-span {
+	word-wrap: break-word;
+	max-width: 400px;
+}
+.card {
+	max-width: 400px;
 }

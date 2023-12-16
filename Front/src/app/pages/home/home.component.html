@@ -34,9 +34,29 @@
 <article class="now">
 	<h3 class="h3-n">En ce moment</h3>
 	<section class="rn">
-		<app-menu-card></app-menu-card>
-		<app-menu-card></app-menu-card>
-		<app-menu-card></app-menu-card>
+		<div class="menu-wrapper">
+			<div *ngFor="let item of temporary_items">
+				<img
+					[src]="item.imgUrl"
+					alt="Burger du moment"
+					class="img-card" />
+				<h4 class="h4-card">{{ item.name }}</h4>
+			</div>
+			<div *ngFor="let item of dessert_items">
+				<img
+					[src]="item.imgUrl"
+					alt="Dessert du moment"
+					class="img-card" />
+				<h4 class="h4-card">{{ item.name }}</h4>
+			</div>
+			<div *ngFor="let item of drink_items">
+				<img
+					[src]="item.imgUrl"
+					alt="Boisson du moment"
+					class="img-card" />
+				<h4 class="h4-card">{{ item.name }}</h4>
+			</div>
+		</div>
 	</section>
 	<button
 		class="button"

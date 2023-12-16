@@ -1,31 +1,90 @@
 <app-carousel></app-carousel>
 <div class="app-ordering"><app-ordering></app-ordering></div>
-<div class="menu">
+<div
+	class="menu"
+	(click)="closeOverlay()"
+	[ngStyle]="{ cursor: overlay ? 'pointer' : 'default' }">
 	<section>
 		<h2>Burger du moment</h2>
-		<app-descriptive-card></app-descriptive-card>
+		<div *ngFor="let item of temporary_items">
+			<div class="desc-container">
+				<img
+					[src]="item.imgUrl"
+					alt="Burger du moment"
+					class="img-desc" />
+				<p class="p-desc desc-cut-span">
+					{{ item.description }}
+				</p>
+			</div>
+		</div>
 	</section>
 	<section>
 		<h2>La carte</h2>
-		<div class="main-menu">
-			<app-menu-card></app-menu-card><app-menu-card></app-menu-card
-			><app-menu-card></app-menu-card><app-menu-card></app-menu-card
-			><app-menu-card></app-menu-card><app-menu-card></app-menu-card
-			><app-menu-card></app-menu-card>
+		<div class="menu-wrapper">
+			<div
+				*ngFor="let item of regular_items"
+				(click)="openOverlayRegular(item.RegularBurger_id)"
+				class="clickable">
+				<img
+					[src]="item.imgUrl"
+					alt="Burger permanent"
+					class="img-card" />
+				<h4 class="h4-card">{{ item.name }}</h4>
+			</div>
 		</div>
 	</section>
 	<section>
 		<h2>Dessert du moment</h2>
-		<app-descriptive-card></app-descriptive-card>
+		<div *ngFor="let item of dessert_items">
+			<div class="desc-container">
+				<img
+					[src]="item.imgUrl"
+					alt="Dessert du moment"
+					class="img-desc" />
+				<p class="p-desc desc-cut-span">
+					{{ item.description }}
+				</p>
+			</div>
+		</div>
 	</section>
 	<section>
 		<h2>Boisson du moment</h2>
-		<app-descriptive-card></app-descriptive-card>
+		<div *ngFor="let item of drink_items">
+			<div class="desc-container">
+				<img
+					[src]="item.imgUrl"
+					alt="Boisson du moment"
+					class="img-desc" />
+				<p class="p-desc desc-cut-span">
+					{{ item.description }}
+				</p>
+			</div>
+		</div>
 	</section>
 	<section>
 		<h2>Petite faim</h2>
-		<div class="snack-menu">
-			<app-menu-card></app-menu-card><app-menu-card></app-menu-card>
+		<div class="menu-wrapper">
+			<div
+				*ngFor="let item of snack_items"
+				(click)="openOverlaySnack(item.Snack_id)"
+				class="clickable">
+				<img
+					[src]="item.imgUrl"
+					alt="Petite faim"
+					class="img-card" />
+				<h4 class="h4-card">{{ item.name }}</h4>
+			</div>
 		</div>
 	</section>
+</div>
+<div
+	class="overlay"
+	*ngIf="overlay"
+	(click)="closeOverlay()"
+	ngClass="clickable">
+	<h2>{{ overlay_data.name }}</h2>
+	<img
+		[src]="overlay_data.imgUrl"
+		alt="Image dans l'overlay" />
+	<p class="desc-cut-span">{{ overlay_data.description }}</p>
 </div>
