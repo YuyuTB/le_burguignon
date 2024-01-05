@@ -13,6 +13,12 @@ header {
 		cursor: pointer;
 	}
 }
+.navbar-logo-small {
+	width: 5%;
+	margin: 5px;
+	position: absolute;
+	left: 0;
+}
 .navbar-links {
 	display: flex;
 	flex-direction: row;
@@ -29,5 +35,13 @@ header {
 	&:hover {
 		color: rgb(255, 211, 44, 95%);
 		border-bottom: rgb(255, 211, 44, 95%) solid 1px;
+	}
+}
+@media screen and (max-width: 900px) {
+	header {
+		justify-content: center;
+	}
+	.navbar-links {
+		padding: 10px;
 	}
 }
