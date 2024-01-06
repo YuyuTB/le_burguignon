@@ -1,32 +1,68 @@
 <header>
-	<img
-		src="assets/images/logo_large.png"
-		alt="logo"
-		class="navbar-logo"
-		routerLink="/home"
-		*ngIf="!isMobile" />
+	<div
+		class="header"
+		[ngClass]="{ burgermenu: isBurgerOpen, '': !isBurgerOpen }"
+		[ngStyle]="{ height: isBurgerOpen ? '300px' : '65px' }">
+		<img
+			src="assets/images/logo_large.png"
+			alt="logo"
+			class="navbar-logo"
+			routerLink="/home"
+			*ngIf="!isSmall" />
 
-	<img
-		src="assets/images/logo_small.png"
-		alt="logo"
-		class="navbar-logo-small"
-		routerLink="/home"
-		*ngIf="isMobile" />
-	<nav class="navbar-links">
-		<a
-			routerLink="/le_burguignon"
-			class="nav-link"
-			>Le Burguignon</a
-		>
-		<a
-			routerLink="/menu"
-			class="nav-link"
-			>La Carte</a
-		>
-		<a
-			routerLink="/contact"
-			class="nav-link"
-			>Nous Contacter</a
-		>
-	</nav>
+		<img
+			src="assets/images/logo_small.png"
+			alt="logo"
+			class="navbar-logo-small"
+			routerLink="/home"
+			*ngIf="isSmall" />
+		<nav
+			class="navbar-links"
+			*ngIf="!isMobile">
+			<a
+				routerLink="/le_burguignon"
+				class="nav-link"
+				>Le Burguignon</a
+			>
+			<a
+				routerLink="/menu"
+				class="nav-link"
+				>La Carte</a
+			>
+			<a
+				routerLink="/contact"
+				class="nav-link"
+				>Nous Contacter</a
+			>
+		</nav>
+		<fa-icon
+			class="burger-button"
+			[icon]="faBars"
+			(click)="activateBurger()"
+			*ngIf="isMobile"></fa-icon>
+		<nav
+			*ngIf="isBurgerOpen && isMobile"
+			class="nav-mobile">
+			<a
+				routerLink="/home"
+				(click)="closeBurger()"
+				>Accueil</a
+			>
+			<a
+				routerLink="/le_burguignon"
+				(click)="closeBurger()"
+				>Le Burguignon</a
+			>
+			<a
+				routerLink="/menu"
+				(click)="closeBurger()"
+				>La Carte</a
+			>
+			<a
+				routerLink="/contact"
+				(click)="closeBurger()"
+				>Nous Contacter</a
+			>
+		</nav>
+	</div>
 </header>
