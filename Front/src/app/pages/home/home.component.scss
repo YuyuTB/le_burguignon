@@ -22,7 +22,7 @@ h1 {
 	text-align: center;
 }
 .le-burguignon {
-	margin: 520px 450px 100px 450px;
+	margin: 520px 150px 100px 150px;
 }
 .explain {
 	display: flex;
@@ -60,4 +60,18 @@ a {
 	color: white;
 	text-align: center;
 	margin-bottom: 40px;
+}
+@media screen and (max-width: 965px) {
+	.explain {
+		flex-wrap: wrap-reverse;
+		text-align: center;
+	}
+	.explain-text {
+		margin: 0;
+	}
+}
+@media screen and (max-width: 685px) {
+	.le-burguignon {
+		margin: 520px 50px 100px 50px;
+	}
 }
