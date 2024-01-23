@@ -45,3 +45,19 @@ p {
 .current-burger {
 	width: 600px;
 }
+@media screen and (max-width: 1065px) {
+	.all {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.left-section {
+		margin: 0;
+	}
+	.logo {
+		margin: 30px;
+	}
+	.current-burger {
+		width: 400px;
+	}
+}
