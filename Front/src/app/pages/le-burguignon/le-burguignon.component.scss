@@ -24,3 +24,16 @@
 h2 {
 	text-align: center;
 }
+@media screen and (max-width: 785px) {
+	.le-burguignon {
+		flex-wrap: wrap-reverse;
+	}
+	.text {
+		width: auto;
+		margin: 20px;
+	}
+	.logo {
+		width: 300px;
+		height: 300px;
+	}
+}
