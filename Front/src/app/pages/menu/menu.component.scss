@@ -64,3 +64,11 @@ section {
 .desc-cut-span {
 	margin-top: 20px;
 }
+.menu-wrapper {
+	justify-content: center;
+}
+@media screen and (max-width: 868px) {
+	.desc-container{
+		flex-wrap: wrap;
+	}
+}
