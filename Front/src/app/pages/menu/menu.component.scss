@@ -67,6 +67,14 @@ section {
 .menu-wrapper {
 	justify-content: center;
 }
+.with-name {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	h3 {
+		text-decoration: underline;
+	}
+}
 @media screen and (max-width: 868px) {
 	.desc-container {
 		flex-wrap: wrap;
