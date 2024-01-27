@@ -51,6 +51,7 @@ textarea {
 	height: 40px;
 	width: 100%;
 	border-radius: 10px;
+	margin-top: 10px;
 }
 textarea {
 	resize: none;
@@ -74,4 +75,18 @@ textarea {
 label {
 	color: #3b3938;
 	text-align: center;
+}
+.logo {
+	width: 40%;
+	height: 40%;
+	display: flex;
+	align-self: center;
+}
+@media screen and (max-width: 968px) {
+	.logo {
+		display: none;
+	}
+	form {
+		width: 100%;
+	}
 }
