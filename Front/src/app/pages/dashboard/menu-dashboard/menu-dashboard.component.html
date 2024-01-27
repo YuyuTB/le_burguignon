@@ -1,4 +1,9 @@
 <div class="container">
-	<app-menu-crud-header></app-menu-crud-header
-	><router-outlet class="margin"></router-outlet>
+	<app-menu-crud-header *ngIf="isOpen"></app-menu-crud-header>
+	<fa-icon
+		[icon]="faSquareCaretDown"
+		(click)="openHeader()"
+		class="sub-menu"
+		[ngClass]="isOpen ? 'menu-open' : ''"></fa-icon>
+	<router-outlet class="margin"></router-outlet>
 </div>

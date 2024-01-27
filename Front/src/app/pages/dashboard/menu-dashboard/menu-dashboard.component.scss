@@ -5,3 +5,19 @@
 .margin {
 	margin-left: 200px;
 }
+.sub-menu {
+	color: black;
+	font-size: 2.5rem;
+	margin: 0 15px;
+	position: absolute;
+	transform: rotate(-90deg);
+	transition: transform 0.2s ease-in-out;
+	&:hover {
+		color: rgb(255, 211, 44, 95%);
+		transform: rotate(0);
+	}
+}
+.menu-open {
+	color: rgb(255, 211, 44, 95%);
+	transform: rotate(0);
+}

@@ -33,3 +33,21 @@ a {
 	text-decoration: underline;
 	color: rgb(255, 211, 44, 95%);
 }
+@media screen and (max-width: 968px) {
+	.navbar-logo {
+		display: none;
+	}
+	header {
+		grid-template-columns: 2fr 1fr;
+		width: 100%;
+	}
+}
+@media screen and (max-width: 645px) {
+	a {
+		margin: 0 10px;
+		font-size: 1rem;
+	}
+	.col {
+		padding: 10px 0;
+	}
+}
