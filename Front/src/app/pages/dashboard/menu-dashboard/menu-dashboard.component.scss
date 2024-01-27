@@ -2,9 +2,7 @@
 	display: flex;
 	flex-direction: row;
 }
-.margin {
-	margin-left: 200px;
-}
+
 .sub-menu {
 	color: black;
 	font-size: 2.5rem;
@@ -12,6 +10,7 @@
 	position: absolute;
 	transform: rotate(-90deg);
 	transition: transform 0.2s ease-in-out;
+	margin-top: 30px;
 	&:hover {
 		color: rgb(255, 211, 44, 95%);
 		transform: rotate(0);

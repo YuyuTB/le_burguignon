@@ -23,9 +23,15 @@
 				<p class="adress">26 Boulevard de l'Université, 21000 Dijon</p>
 			</div>
 		</section>
-		<img
-			src="assets/images/placeholders/catto.jpg"
-			alt="le burger du moment"
-			class="current-burger" />
+		<div
+			*ngFor="let item of temporary_items"
+			class="current-burger">
+			<div class="desc-container">
+				<img
+					[src]="item.imgUrl"
+					alt="Burger du moment"
+					class="img-desc" />
+			</div>
+		</div>
 	</div>
 </div>

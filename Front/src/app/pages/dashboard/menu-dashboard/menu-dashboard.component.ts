@@ -15,4 +15,7 @@ export class MenuDashboardComponent {
 			this.isOpen = true;
 		}
 	}
+	closeHeader(): void {
+		this.isOpen = false;
+	}
 }

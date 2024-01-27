@@ -89,14 +89,16 @@ h4 {
 	margin: 20px 50px;
 }
 .desc-cut {
-	max-width: 400px;
+	max-width: 200px;
 	span {
+		display: inline-block;
+		max-width: 100%;
 		word-wrap: break-word;
 	}
 }
 .desc-cut-span {
 	word-wrap: break-word;
-	max-width: 400px;
+	max-width: 200px;
 }
 .card {
 	max-width: 400px;

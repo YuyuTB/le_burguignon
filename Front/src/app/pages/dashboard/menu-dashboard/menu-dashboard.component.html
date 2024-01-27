@@ -1,5 +1,7 @@
 <div class="container">
-	<app-menu-crud-header *ngIf="isOpen"></app-menu-crud-header>
+	<app-menu-crud-header
+		*ngIf="isOpen"
+		(buttonClick)="closeHeader()"></app-menu-crud-header>
 	<fa-icon
 		[icon]="faSquareCaretDown"
 		(click)="openHeader()"

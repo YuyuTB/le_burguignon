@@ -2,23 +2,28 @@
 	<a
 		routerLink="regular-burger-crud"
 		routerLinkActive="active"
-		>Burgers permanents</a
+		(click)="closeMenu()">
+		Burgers permanents</a
 	>
 	<a
 		routerLink="snack-crud"
 		routerLinkActive="active"
+		(click)="closeMenu()"
 		>Petites faims</a
 	><a
 		routerLink="temporary-burger-crud"
 		routerLinkActive="active"
+		(click)="closeMenu()"
 		>Burger du moment</a
 	><a
 		routerLink="dessert-crud"
 		routerLinkActive="active"
+		(click)="closeMenu()"
 		>Dessert du moment</a
 	><a
 		routerLink="drink-crud"
 		routerLinkActive="active"
+		(click)="closeMenu()"
 		>Boisson du moment</a
 	>
 </nav>
