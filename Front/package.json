@@ -4,9 +4,10 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
-		"build": "ng build",
+		"build": "npm run minify-css && ng build",
 		"watch": "ng build --watch --configuration development",
-		"test": "ng test"
+		"test": "ng test",
+		"minify-css": "cssnano input.css output.min.css"
 	},
 	"private": true,
 	"dependencies": {
@@ -42,6 +43,7 @@
 		"@angular/cli": "~16.1.1",
 		"@angular/compiler-cli": "^16.1.0",
 		"@types/jasmine": "~4.3.0",
+		"cssnano": "^6.0.3",
 		"jasmine-core": "~4.6.0",
 		"karma": "~6.4.0",
 		"karma-chrome-launcher": "~3.2.0",

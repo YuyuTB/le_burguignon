@@ -4,7 +4,7 @@
 	class="menu"
 	(click)="closeOverlay()"
 	[ngStyle]="{ cursor: overlay ? 'pointer' : 'default' }">
-	<section>
+	<section *ngIf="temporary_items.length > 0">
 		<h2>Burger du moment</h2>
 		<div
 			*ngFor="let item of temporary_items"
@@ -22,7 +22,7 @@
 			</div>
 		</div>
 	</section>
-	<section>
+	<section *ngIf="regular_items.length > 0">
 		<h2>La carte</h2>
 		<div class="menu-wrapper">
 			<div
@@ -37,7 +37,7 @@
 			</div>
 		</div>
 	</section>
-	<section>
+	<section *ngIf="dessert_items.length > 0">
 		<h2>Dessert du moment</h2>
 		<div
 			*ngFor="let item of dessert_items"
@@ -54,7 +54,7 @@
 			</div>
 		</div>
 	</section>
-	<section>
+	<section *ngIf="drink_items.length > 0">
 		<h2>Boisson du moment</h2>
 		<div
 			*ngFor="let item of drink_items"
@@ -71,7 +71,7 @@
 			</div>
 		</div>
 	</section>
-	<section>
+	<section *ngIf="snack_items.length > 0">
 		<h2>Petite faim</h2>
 		<div class="menu-wrapper">
 			<div

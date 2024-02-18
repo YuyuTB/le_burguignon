@@ -2,6 +2,7 @@
 Back/config/config.js
 Back/config/user.js
 Back/config/password.js
+Back/config/config-deploy/config.js
 
 # Ignorer les dépendances Node.js (pour éviter de les inclure dans le dépôt)
 Back/node_modules/

@@ -18,6 +18,8 @@ const corsOptions = {
 	origin: 'http://localhost:4200', // Update this with your Angular app's origin
 	optionsSuccessStatus: 204,
 };
+const angularDistPath = path.join(__dirname, '../Front/dist');
+app.use(express.static(angularDistPath));
 
 sequelize
 	.authenticate()
@@ -41,6 +43,10 @@ app.use('/api', snackRoutes);
 app.use('/api', temporaryRoutes);
 app.use('/api', drinkRoutes);
 app.use('/api', dessertRoutes);
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(angularDistPath, 'index.html'));
+});
 
 app.listen(PORT, () => {
 	console.log('Server is running on port 3000');
