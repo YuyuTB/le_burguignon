@@ -43,6 +43,8 @@ import { UpdatesnackComponent } from './pages/dashboard/menu-dashboard/cruds/sna
 import { UpdatetemporaryComponent } from './pages/dashboard/menu-dashboard/cruds/temporary-burger-crud/updatetemporary/updatetemporary.component';
 import { UpdatedrinkComponent } from './pages/dashboard/menu-dashboard/cruds/drink-crud/updatedrink/updatedrink.component';
 import { UpdatedessertComponent } from './pages/dashboard/menu-dashboard/cruds/dessert-crud/updatedessert/updatedessert.component';
+import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
+import { LegalMentionsComponent } from './pages/legal-mentions/legal-mentions.component';
 
 @NgModule({
 	declarations: [
@@ -81,6 +83,8 @@ import { UpdatedessertComponent } from './pages/dashboard/menu-dashboard/cruds/d
 		UpdatetemporaryComponent,
 		UpdatedrinkComponent,
 		UpdatedessertComponent,
+  DataProtectionComponent,
+  LegalMentionsComponent,
 	],
 	imports: [
 		BrowserModule,

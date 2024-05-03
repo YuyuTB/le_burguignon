@@ -7,14 +7,19 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { LoginComponent } from './pages/login/login.component';
+import { LegalMentionsComponent } from './pages/legal-mentions/legal-mentions.component';
+import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
 
 const routes: Routes = [
 	{ path: '', component: LandingPageComponent },
+	{ path: 'legal', component: LegalMentionsComponent },
+	{ path: 'data_protection', component: DataProtectionComponent },
 	{ path: 'home', component: HomeComponent },
 	{ path: 'le_burguignon', component: LeBurguignonComponent },
 	{ path: 'menu', component: MenuComponent },
 	{ path: 'contact', component: ContactComponent },
 	{ path: 'login', component: LoginComponent },
+	
 ];
 
 @NgModule({

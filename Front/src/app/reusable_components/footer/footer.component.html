@@ -15,10 +15,10 @@
 			</section>
 		</div>
 		<div class="two-contacts">
-			<section class="contact">
+			<!-- <section class="contact">
 				<fa-icon [icon]="faEnvelope"></fa-icon>
 				<p class="contact-text">{{ mail }}</p>
-			</section>
+			</section> -->
 			<section class="contact">
 				<fa-icon [icon]="faSnapchat"></fa-icon>
 				<p class="contact-text">Leburguignon</p>
@@ -33,7 +33,8 @@
 		<section class="open">
 			<h3>Horaires d'ouverture</h3>
 			<p>
-				Du Lundi au Jeudi midi et tous les soirs de 18h à 23h (Dimanche inclu)
+				Du Lundi au Jeudi midi et tous les soirs de 18h à 23h (Dimanche
+				inclu)
 			</p>
 		</section>
 
@@ -41,5 +42,11 @@
 			class="login"
 			[icon]="faGear"
 			routerLink="/login"></fa-icon>
+	</div>
+	<div class="legal">
+		<p routerLink="/data_protection">
+			POLITIQUE DE PROTECTION DES DONNÉES PERSONNELLES
+		</p>
+		<p routerLink="/legal">MENTIONS LÉGALES</p>
 	</div>
 </footer>

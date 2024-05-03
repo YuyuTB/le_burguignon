@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 	providedIn: 'root',
 })
 export class DrinkService {
-	private apiUrl = 'http://localhost:3000/api/drink';
+	private apiUrl = 'https://api.burguignon.fr/api/drink';
 	constructor(private http: HttpClient, private router: Router) {}
 	private itemIdSource = new Subject<number>();
 	itemId$ = this.itemIdSource.asObservable();

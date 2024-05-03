@@ -81,3 +81,20 @@ section {
 		flex-wrap: wrap;
 	}
 }
+@media screen and (max-width: 535px) {
+	.desc-container {
+		width: 100%;
+		img {
+			width: 300px;
+			height: 250px;
+		}
+	}
+	.clickable img {
+		width: 300px;
+		height: 250px;
+	}
+	.overlay img {
+		width: 300px;
+		height: 250px;
+	}
+}

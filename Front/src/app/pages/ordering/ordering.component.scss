@@ -14,3 +14,11 @@ a {
 		text-decoration: underline;
 	}
 }
+#order {
+	margin: 0;
+}
+@media screen and (max-width: 568px) {
+	a {
+		margin: 0 10px;
+	}
+}

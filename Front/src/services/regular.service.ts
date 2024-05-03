@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 	providedIn: 'root',
 })
 export class RegularService {
-	private apiUrl = 'http://localhost:3000/api/regular';
+	private apiUrl = 'https://api.burguignon.fr/api/regular';
 	constructor(private http: HttpClient, private router: Router) {}
 	private itemIdSource = new Subject<number>();
 	itemId$ = this.itemIdSource.asObservable();

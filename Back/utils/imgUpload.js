@@ -1,4 +1,5 @@
 const multer = require('multer');
+const path = require('path');
 const { v4: uuidv4 } = require('uuid'); // Importe la fonction v4 d'UUID
 
 const MIME_TYPES = {
@@ -6,10 +7,10 @@ const MIME_TYPES = {
 	'image/jpeg': 'jpg',
 	'image/png': 'png',
 };
-
+const uploadFolder = path.resolve(__dirname, '../images');
 const storage = multer.diskStorage({
 	destination: (req, file, callback) => {
-		callback(null, 'images');
+		callback(null, uploadFolder);
 	},
 	filename: (req, file, callback) => {
 		const extension = MIME_TYPES[file.mimetype];
@@ -37,7 +38,7 @@ async function uploadImageAndAssociateWithModel(
 
 		const newItem = await Model.create({ description });
 
-		const imageUrl = `http://localhost:3000/images/${req.file.filename}`;
+		const imageUrl = `images/${req.file.filename}`;
 
 		const updateObject = {};
 		updateObject['imgUrl'] = imageUrl;
@@ -89,7 +90,7 @@ async function uploadUpdate(req, res, next, Model, identifierField) {
 				.send("L'élément à mettre à jour n'a pas été trouvé.");
 		}
 
-		const imageUrl = `http://localhost:3000/images/${req.file.filename}`;
+		const imageUrl = `images/${req.file.filename}`;
 		const updateObject = {
 			imgUrl: imageUrl,
 			description: description,

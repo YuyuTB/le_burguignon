@@ -2,9 +2,13 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	box-shadow: #3b393832 0 1px 8px;
+	box-shadow: #3b393832 0 4px 2px -2px;
 	z-index: 3;
 	position: sticky;
+}
+header {
+	margin: 0;
+	padding: 0;
 }
 .navbar-logo {
 	width: 300px;

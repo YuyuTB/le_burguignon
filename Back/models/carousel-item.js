@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/sequelize');
 
 const CarouselItem = sequelize.define(
-	'CarouselItem',
+	'carouselitem',
 	{
 		CarouselItem_id: {
 			type: DataTypes.INTEGER,

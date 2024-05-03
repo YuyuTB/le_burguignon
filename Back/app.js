@@ -1,5 +1,7 @@
-const bodyParser = require('body-parser');
+const https = require('https');
+const fs = require('fs');
 const express = require('express');
+const bodyParser = require('body-parser');
 const sequelize = require('./config/sequelize');
 const carouselRoutes = require('./routes/carouselRoutes');
 const cors = require('cors');
@@ -13,12 +15,12 @@ const drinkRoutes = require('./routes/drinkRoutes');
 const dessertRoutes = require('./routes/dessertRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 const corsOptions = {
-	origin: 'http://localhost:4200', // Update this with your Angular app's origin
+	origin: ['https://burguignon.fr', 'https://www.burguignon.fr'],
 	optionsSuccessStatus: 204,
 };
-const angularDistPath = path.join(__dirname, '../Front/dist');
+const angularDistPath = path.join(__dirname, '../dist/front');
+
 app.use(express.static(angularDistPath));
 
 sequelize
@@ -30,8 +32,8 @@ sequelize
 		console.error('Unable to connect to the database: ', error);
 	});
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }));
+app.use(bodyParser.json({ limit: '500mb' }));
 app.use(cors(corsOptions));
 
 app.post('/api/login', authController.login);
@@ -48,6 +50,13 @@ app.get('*', (req, res) => {
 	res.sendFile(path.join(angularDistPath, 'index.html'));
 });
 
-app.listen(PORT, () => {
-	console.log('Server is running on port 3000');
+// Configuration des options HTTPS
+const httpsOptions = {
+	key: fs.readFileSync('/etc/letsencrypt/live/burguignon.fr/privkey.pem'),
+	cert: fs.readFileSync('/etc/letsencrypt/live/burguignon.fr/fullchain.pem'),
+};
+
+// Création du serveur HTTPS
+https.createServer(httpsOptions, app).listen(8443, () => {
+	console.log('Server is running on port 8443');
 });

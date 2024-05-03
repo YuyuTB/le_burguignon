@@ -12,18 +12,16 @@ export class AuthService {
 	constructor(private http: HttpClient) {
 		this.jwtHelper = new JwtHelperService();
 	}
-	private apiUrl = 'http://localhost:3000/api';
+	private apiUrl = 'https://api.burguignon.fr/api';
 
 	// Dans ton service d'authentification
 	login(username: string, password: string): Observable<any> {
-		return this.http
-			.post(this.apiUrl + '/login', { username, password })
-			.pipe(
-				map((response: any) => {
-					// Stocke le token dans le localStorage
-					localStorage.setItem('token', response.token);
-				})
-			);
+		return this.http.post(this.apiUrl + '/login', { username, password }).pipe(
+			map((response: any) => {
+				// Stocke le token dans le localStorage
+				localStorage.setItem('token', response.token);
+			})
+		);
 	}
 	isAuthenticated(): boolean {
 		return !!localStorage.getItem('token');

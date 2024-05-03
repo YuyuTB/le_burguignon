@@ -75,7 +75,14 @@ a {
 	}
 }
 @media screen and (max-width: 685px) {
+	.over-b {
+		font-size: 1.6rem;
+	}
 	.le-burguignon {
 		margin: 520px 50px 100px 50px;
+	}
+	.explain img {
+		width: 300px;
+		height: 300px;
 	}
 }
