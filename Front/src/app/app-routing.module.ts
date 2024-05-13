@@ -11,14 +11,14 @@ import { LegalMentionsComponent } from './pages/legal-mentions/legal-mentions.co
 import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
 
 const routes: Routes = [
-	{ path: '', component: LandingPageComponent },
-	{ path: 'legal', component: LegalMentionsComponent },
-	{ path: 'data_protection', component: DataProtectionComponent },
-	{ path: 'home', component: HomeComponent },
+
+	{ path: '', component: HomeComponent },
 	{ path: 'le_burguignon', component: LeBurguignonComponent },
 	{ path: 'menu', component: MenuComponent },
 	{ path: 'contact', component: ContactComponent },
 	{ path: 'login', component: LoginComponent },
+	{ path: 'legal', component: LegalMentionsComponent },
+	{ path: 'data_protection', component: DataProtectionComponent },
 	
 ];
 

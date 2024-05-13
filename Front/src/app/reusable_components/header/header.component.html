@@ -7,14 +7,14 @@
 			src="assets/images/logo_large.png"
 			alt="logo"
 			class="navbar-logo"
-			routerLink="/home"
+			routerLink="/"
 			*ngIf="!isSmall" />
 
 		<img
 			src="assets/images/logo_small.png"
 			alt="logo"
 			class="navbar-logo-small"
-			routerLink="/home"
+			routerLink="/"
 			*ngIf="isSmall" />
 		<nav
 			class="navbar-links"
@@ -44,7 +44,7 @@
 			*ngIf="isBurgerOpen && isMobile"
 			class="nav-mobile">
 			<a
-				routerLink="/home"
+				routerLink="/"
 				(click)="closeBurger()"
 				>Accueil</a
 			>

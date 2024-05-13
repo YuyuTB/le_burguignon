@@ -13,5 +13,5 @@ export class FooterComponent {
 	faInstagram = faInstagram;
 	faSnapchat = faSnapchat;
 	faGear = faGear;
-	mail = 'contact@burguignon.fr';
+	mail = 'contact.le.burguignon@gmail.com';
 }

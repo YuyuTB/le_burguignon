@@ -63,7 +63,7 @@ const itemController = {
 			// Configurer le contenu de l'e-mail
 			const mailOptions = {
 				from: 'theo.berry.meleck@gmail.com',
-				to: 'contact@burguignon.fr', // Remplacez par votre adresse e-mail
+				to: 'contact.le.burguignon@gmail.com', // Remplacez par votre adresse e-mail
 				subject:
 					'Nouveau message depuis le formulaire de contact Burguignon.fr',
 				text: emailContent,

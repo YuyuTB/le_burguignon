@@ -14,16 +14,9 @@ export class AppComponent {
 	constructor(private router: Router) {
 		router.events.subscribe((event) => {
 			if (event instanceof NavigationEnd) {
-				this.showHeader =
-					event.url == '/menu' ||
-					event.url == '/contact' ||
-					event.url == '/le_burguignon' ||
-					event.url == '/home';
-				this.showFooter =
-					event.url == '/menu' ||
-					event.url == '/contact' ||
-					event.url == '/le_burguignon' ||
-					event.url == '/home';
+				const url = event.urlAfterRedirects || event.url;
+           		this.showHeader = url.startsWith('/dashboard');
+            	this.showFooter = url.startsWith('/dashboard');
 			}
 		});
 	}

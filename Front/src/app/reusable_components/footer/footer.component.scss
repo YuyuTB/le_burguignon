@@ -62,7 +62,11 @@ a {
 }
 .legal{
 	padding: 20px;
-	p:hover{
+	a{
+		color: white;
+		text-decoration: none;
+	}
+	a:hover{
 		cursor: pointer;
 		color: rgb(255, 211, 44, 95%);
 	}
